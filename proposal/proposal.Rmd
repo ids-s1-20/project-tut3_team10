@@ -29,7 +29,10 @@ view(suicides)
 
 ## 2. Data
 
-
+```{r display-dataframe, message = FALSE}
+suicides <- read_csv("master.csv")
+glimpse(suicides)
+```
 
 ## 3. Data analysis plan
 
