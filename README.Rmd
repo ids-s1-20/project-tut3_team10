@@ -22,9 +22,9 @@ Your results with proper output and graphics go in your presentation, this space
 ```{r load-data, echo = FALSE}
 library(readr)
 suicides <- read_csv("master.csv")
-glimpse(suicides)
-view(suici)
+view(suicides)
 ```
+
 
 ## Presentation
 

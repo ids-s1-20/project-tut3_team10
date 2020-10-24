@@ -7,6 +7,9 @@ output: github_document
 ```{r load-packages, message = FALSE}
 library(tidyverse)
 library(broom)
+library(rea)
+suicides <- read_csv("master.csv")
+view(suicides)
 ```
 
 ## 1. Introduction
