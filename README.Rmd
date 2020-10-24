@@ -20,7 +20,10 @@ And make sure to hide your code with  `echo = FALSE` unless the point you are tr
 Your results with proper output and graphics go in your presentation, this space is for a brief summary of your project.
 
 ```{r load-data, echo = FALSE}
-# load data here, if you like
+library(readr)
+suicides <- read_csv("master.csv")
+glimpse(suicides)
+view(suici)
 ```
 
 ## Presentation
