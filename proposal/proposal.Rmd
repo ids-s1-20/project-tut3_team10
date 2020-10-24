@@ -11,8 +11,20 @@ output: github_document
 ## 1. Introduction
 
 
+```{r load-packages, message = FALSE}
+library(tidyverse)
+library(broom)
+library(readr)
+suicides <- read_csv("master.csv")
+view(suicides)
+```
 
-
+```{r}
+suicides <- suicides %>% 
+  rename(country_year = 'country-year',
+         HDI = 'HDI for year')
+view(suicides)
+```
 
 
 ## 2. Data
@@ -21,5 +33,24 @@ output: github_document
 
 ## 3. Data analysis plan
 
+
+```{r}
+suicides %>% 
+  group_by(country) %>% 
+  summarise(n = sum(suicides_no))
+```
+
+
+
+```{r}
+suicides %>% 
+  group_by(sex) %>% 
+  summarise(n = sum(suicides_no)) %>% 
+  ggplot(aes(x = sex, y = n)) + 
+  geom_col() +
+  labs(title = "Suicide Rates by Gender",
+       x = "Gender",
+       y = "Number of Cases")
+```
 
 
