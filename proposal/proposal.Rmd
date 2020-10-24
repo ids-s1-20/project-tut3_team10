@@ -4,23 +4,49 @@ author: "Team name"
 output: github_document
 ---
 
-```{r load-packages, message = FALSE}
-library(tidyverse)
-library(broom)
-library(rea)
-suicides <- read_csv("master.csv")
-view(suicides)
-```
+
 
 ## 1. Introduction
 
 
 
+
+
+
 ## 2. Data
 
+```{r load-packages, message = FALSE}
+library(tidyverse)
+library(broom)
+library(readr)
+suicides <- read_csv("master.csv")
+```
+
+```{r}
+suicides <- suicides %>% 
+  rename(country_year = 'country-year',
+         HDI = 'HDI for year')
+view(suicides)
+```
 
 
 ## 3. Data analysis plan
 
+```{r}
+suicides %>% 
+  group_by(sex) %>% 
+  summarise(n = sum(suicides_no)) %>% 
+  ggplot(aes(x = sex, y = n)) + 
+  geom_col() +
+  labs(title = "Suicide Rates by Gender",
+       x = "Gender",
+       y = "Number of Cases")
+```
+
+```{r}
+suicides %>% 
+  group_by(country) %>% 
+  summarise(n = sum(suicides_no))
+```
 
 
