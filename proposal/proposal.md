@@ -12,14 +12,27 @@ suicides <- read_csv("master.csv")
 view(suicides)
 ```
 
+## 2\. Data
+
 ``` r
-suicides <- suicides %>% 
-  rename(country_year = 'country-year',
-         HDI = 'HDI for year')
-view(suicides)
+suicides <- read_csv("master.csv")
+glimpse(suicides)
 ```
 
-## 2\. Data
+    ## Rows: 27,820
+    ## Columns: 12
+    ## $ country              <chr> "Albania", "Albania", "Albania", "Albania", "Alb…
+    ## $ year                 <dbl> 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, …
+    ## $ sex                  <chr> "male", "male", "female", "male", "male", "femal…
+    ## $ age                  <chr> "15-24 years", "35-54 years", "15-24 years", "75…
+    ## $ suicides_no          <dbl> 21, 16, 14, 1, 9, 1, 6, 4, 1, 0, 0, 0, 2, 17, 1,…
+    ## $ population           <dbl> 312900, 308000, 289700, 21800, 274300, 35600, 27…
+    ## $ `suicides/100k pop`  <dbl> 6.71, 5.19, 4.83, 4.59, 3.28, 2.81, 2.15, 1.56, …
+    ## $ `country-year`       <chr> "Albania1987", "Albania1987", "Albania1987", "Al…
+    ## $ `HDI for year`       <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+    ## $ `gdp_for_year ($)`   <dbl> 2156624900, 2156624900, 2156624900, 2156624900, …
+    ## $ `gdp_per_capita ($)` <dbl> 796, 796, 796, 796, 796, 796, 796, 796, 796, 796…
+    ## $ generation           <chr> "Generation X", "Silent", "Generation X", "G.I. …
 
 ## 3\. Data analysis plan
 
@@ -48,6 +61,20 @@ suicides %>%
 
 ``` r
 suicides %>% 
+  group_by(year) %>% 
+  summarise(n = sum(suicides_no)) %>% 
+  summarise(mean = mean(n))
+```
+
+    ## `summarise()` ungrouping output (override with `.groups` argument)
+
+    ## # A tibble: 1 x 1
+    ##      mean
+    ##     <dbl>
+    ## 1 210888.
+
+``` r
+suicides %>% 
   group_by(sex) %>% 
   summarise(n = sum(suicides_no)) %>% 
   ggplot(aes(x = sex, y = n)) + 
@@ -60,3 +87,21 @@ suicides %>%
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+``` r
+suicides %>% 
+  group_by(generation) %>% 
+  summarise(n = sum(suicides_no))
+```
+
+    ## `summarise()` ungrouping output (override with `.groups` argument)
+
+    ## # A tibble: 6 x 2
+    ##   generation            n
+    ##   <chr>             <dbl>
+    ## 1 Boomers         2284498
+    ## 2 G.I. Generation  510009
+    ## 3 Generation X    1532804
+    ## 4 Generation Z      15906
+    ## 5 Millenials       623459
+    ## 6 Silent          1781744

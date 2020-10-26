@@ -19,14 +19,6 @@ suicides <- read_csv("master.csv")
 view(suicides)
 ```
 
-```{r}
-suicides <- suicides %>% 
-  rename(country_year = 'country-year',
-         HDI = 'HDI for year')
-view(suicides)
-```
-
-
 ## 2. Data
 
 ```{r display-dataframe, message = FALSE}
@@ -36,13 +28,19 @@ glimpse(suicides)
 
 ## 3. Data analysis plan
 
-
 ```{r}
 suicides %>% 
   group_by(country) %>% 
   summarise(n = sum(suicides_no))
 ```
 
+```{r}
+suicides %>% 
+  group_by(year) %>% 
+  summarise(n = sum(suicides_no)) %>% 
+  summarise(mean = mean(n))
+
+```
 
 
 ```{r}
@@ -55,5 +53,7 @@ suicides %>%
        x = "Gender",
        y = "Number of Cases")
 ```
+
+
 
 
