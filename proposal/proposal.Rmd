@@ -15,6 +15,7 @@ output: github_document
 library(tidyverse)
 library(broom)
 library(readr)
+library(forcats)
 suicides <- read_csv("master.csv")
 view(suicides)
 ```
@@ -54,6 +55,9 @@ suicides %>%
        y = "Number of Cases")
 ```
 
-
-
-
+```{r}
+suicides %>% 
+  group_by(generation) %>% 
+  summarise(n = sum(suicides_no)) %>% 
+  ggplot(aes(x = generation, y = n)) + 
+  geom_col()

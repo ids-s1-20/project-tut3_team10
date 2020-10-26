@@ -91,17 +91,11 @@ suicides %>%
 ``` r
 suicides %>% 
   group_by(generation) %>% 
-  summarise(n = sum(suicides_no))
+  summarise(n = sum(suicides_no)) %>% 
+  ggplot(aes(x = generation, y = n)) + 
+  geom_col()
 ```
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
-    ## # A tibble: 6 x 2
-    ##   generation            n
-    ##   <chr>             <dbl>
-    ## 1 Boomers         2284498
-    ## 2 G.I. Generation  510009
-    ## 3 Generation X    1532804
-    ## 4 Generation Z      15906
-    ## 5 Millenials       623459
-    ## 6 Silent          1781744
+![](proposal_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
