@@ -87,21 +87,3 @@ suicides %>%
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
-
-``` r
-suicides %>% 
-  group_by(generation) %>% 
-  summarise(n = sum(suicides_no))
-```
-
-    ## `summarise()` ungrouping output (override with `.groups` argument)
-
-    ## # A tibble: 6 x 2
-    ##   generation            n
-    ##   <chr>             <dbl>
-    ## 1 Boomers         2284498
-    ## 2 G.I. Generation  510009
-    ## 3 Generation X    1532804
-    ## 4 Generation Z      15906
-    ## 5 Millenials       623459
-    ## 6 Silent          1781744
