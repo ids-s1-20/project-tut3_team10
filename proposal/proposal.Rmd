@@ -61,3 +61,15 @@ suicides %>%
   summarise(n = sum(suicides_no)) %>% 
   ggplot(aes(x = generation, y = n)) + 
   geom_col()
+```
+
+```{r}
+suicides %>% 
+  group_by(year) %>% 
+  summarise( n = sum(suicides_no)) %>% 
+  filter(year < 2016) %>% 
+  ggplot(aes(x = year, y = n)) + 
+  geom_line() 
+```
+
+

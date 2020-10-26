@@ -8,6 +8,7 @@ Team name
 library(tidyverse)
 library(broom)
 library(readr)
+library(forcats)
 suicides <- read_csv("master.csv")
 view(suicides)
 ```
@@ -99,3 +100,16 @@ suicides %>%
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
 ![](proposal_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+suicides %>% 
+  group_by(year) %>% 
+  summarise( n = sum(suicides_no)) %>% 
+  filter(year < 2016) %>% 
+  ggplot(aes(x = year, y = n)) + 
+  geom_line() 
+```
+
+    ## `summarise()` ungrouping output (override with `.groups` argument)
+
+![](proposal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
