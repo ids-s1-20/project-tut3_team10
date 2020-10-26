@@ -9,7 +9,12 @@ output: github_document
 
 
 ## 1. Introduction
+Whilst looking for a dataset for our project, we came across one about suicides. This got us wondering about how suicide rates are influenced by different variables. For our project we will be looking into how suicides differ between genders, countries, and each year from 1985 to 2016. We will also compare the countries to other variables such as HDI and gdp per capita, in order to extract valuable new information of what affects the rates of suicide in each country.
 
+Hypothesis:
+We suspect that countries with low gdp per capita and low Human Development Index will have high levels of suicide. We also think that men will have higher suicide rates than women.
+
+The data was collected from kaggle and uses data from the United Nations Development Program. (2018). Human development index (HDI). Retrieved from http://hdr.undp.org/en/indicators/137506; World Bank. (2018). World development indicators: GDP (current US$) by country:1985 to 2016. Retrieved from http://databank.worldbank.org/data/source/world-development-indicators# ; [Szamil]. (2017). Suicide in the Twenty-First Century [dataset]. Retrieved from https://www.kaggle.com/szamil/suicide-in-the-twenty-first-century/notebook ; World Health Organization. (2018). Suicide prevention. Retrieved from http://www.who.int/mental_health/suicide-prevention/en/. The cases are the 101 countries from which the data was collected. And the variables: year, sex, age, number of suicide, population, number of suicides by one hundred thousand people of the population of each country, the HDI of each country in the years that the data was collected and the GDP of each country in each year, GDP per capita in each year for each country and the generation.
 
 ```{r load-packages, message = FALSE}
 library(tidyverse)
