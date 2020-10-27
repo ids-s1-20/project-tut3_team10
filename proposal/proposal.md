@@ -199,4 +199,7 @@ One important statistical method we will try to use is a heat map, as we
 believe it will be a useful tool for displaying data on countries across
 the world. A heat map could also be used to see levels of poverty and
 inequality across the world. If the heat maps show similar patterns it
-will support our hypothesis.
+will support our hypothesis. Another statistical method is to analyze
+the line graph of suicides per year filtered for certain countries. This
+could be compared to the timeline of potentially relevant events that
+the country has been through to see if they had any effect.
