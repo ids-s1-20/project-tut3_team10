@@ -35,25 +35,37 @@ glimpse(suicides)
 
 ## 3. Data analysis plan
 
-```{r}
+```{r renaming}
+suicides <- suicides %>% 
+  rename(hdi = 'HDI for year',
+         suicides_per_100k_pop = 'suicides/100k pop',
+         country_year = 'country-year',
+         gdp ='gdp_for_year ($)',
+         gdp_per_capita = 'gdp_per_capita ($)') 
+```
+
+
+```{r total-suicides-country}
 suicides %>% 
   group_by(country) %>% 
-  summarise(n = sum(suicides_no))
-```
-
-
-
-
-```{r}
-suicides %>% 
-  group_by(year) %>% 
   summarise(n = sum(suicides_no)) %>% 
-  summarise(mean = mean(n))
-
+  arrange(desc(n))
 ```
 
+First we summed the total suicides by country to see which country had the greatest number of suicides in the dataset.This turned out to be the Russian Federation. However this does not tell us much about suicide rates as it doesn't take into account the population of the country. In the next code chunk we will sum the total number of suicides per 100000 population to see which country has the highest suicide rates.
 
-```{r}
+```{r total-suicides-country-per-pop}
+suicides %>% 
+  group_by(country) %>% 
+  summarise(n = sum(suicides_per_100k_pop)) %>% 
+  arrange(desc(n))
+```
+
+It seems that Russia also has the highest total number of suicides per 100000 people in the 30 years. However the next highest is Lithuania which has a small population but a high level of suicide.
+
+In our next plot we test one of our hypotheses. Do more men commit suicide than women?
+
+```{r suicides_by_gender}
 suicides %>% 
   group_by(sex) %>% 
   summarise(n = sum(suicides_no)) %>% 
@@ -64,21 +76,19 @@ suicides %>%
        y = "Number of Cases")
 ```
 
-```{r}
-suicides %>% 
-  group_by(generation) %>% 
-  summarise(n = sum(suicides_no)) %>% 
-  ggplot(aes(x = generation, y = n)) + 
-  geom_col()
-```
+This graph shows our hypothesis is correct, there is almost three times more male suicides than female.
 
-```{r}
+Our final plot compares the total number of suicides for each year.
+
+```{r suicides_by_year}
 suicides %>% 
   group_by(year) %>% 
   summarise( n = sum(suicides_no)) %>% 
-  filter(year < 2016) %>% 
   ggplot(aes(x = year, y = n)) + 
-  geom_line() 
+  geom_line() +
+  labs(title = "Suicide Rates by Year",
+       x = "Year",
+       y = "Number of Cases")
 ```
 
-
+The value for 2016 is extremely low. This suggests that the data for 2016 is incomplete so we should ignore this. Suicide rates were highest around the late 1990s, early 2000s. There is also a increase around 2008/ 2009. One possible contributor to this is the 2008 financial crash.

@@ -1,6 +1,6 @@
 Project proposal
 ================
-Team name
+Tutorial 3 Team 10
 
 ## 1\. Introduction
 
@@ -26,13 +26,14 @@ Retrieved from
 Retrieved from
 <https://www.kaggle.com/szamil/suicide-in-the-twenty-first-century/notebook>
 ; World Health Organization. (2018). Suicide prevention. Retrieved from
-<http://www.who.int/mental_health/suicide-prevention/en/>. The cases are
-the 101 countries from which the data was collected. And the variables:
-year, sex, age, number of suicide, population, number of suicides by one
-hundred thousand people of the population of each country, the HDI of
-each country in the years that the data was collected and the GDP of
-each country in each year, GDP per capita in each year for each country
-and the generation.
+<http://www.who.int/mental_health/suicide-prevention/en/>. The
+observations are the number of suicides that fall into each category of
+gender, age group, country and year. There are in total 27,280
+observations spanning 101 countries and 31 years. The variables are:
+year, sex, age, number of suicides, population, number of suicides per
+one hundred thousand people, the HDI (Human Development Index) of each
+country, the GDP of each country, the GDP per capita of each country and
+the generation of the victims.
 
 ``` r
 library(tidyverse)
@@ -68,9 +69,50 @@ glimpse(suicides)
 ## 3\. Data analysis plan
 
 ``` r
+suicides <- suicides %>% 
+  rename(hdi = 'HDI for year',
+         suicides_per_100k_pop = 'suicides/100k pop',
+         country_year = 'country-year',
+         gdp ='gdp_for_year ($)',
+         gdp_per_capita = 'gdp_per_capita ($)') 
+```
+
+``` r
 suicides %>% 
   group_by(country) %>% 
-  summarise(n = sum(suicides_no))
+  summarise(n = sum(suicides_no)) %>% 
+  arrange(desc(n))
+```
+
+    ## `summarise()` ungrouping output (override with `.groups` argument)
+
+    ## # A tibble: 101 x 2
+    ##    country                  n
+    ##    <chr>                <dbl>
+    ##  1 Russian Federation 1209742
+    ##  2 United States      1034013
+    ##  3 Japan               806902
+    ##  4 France              329127
+    ##  5 Ukraine             319950
+    ##  6 Germany             291262
+    ##  7 Republic of Korea   261730
+    ##  8 Brazil              226613
+    ##  9 Poland              139098
+    ## 10 United Kingdom      136805
+    ## # … with 91 more rows
+
+First we summed the total suicides by country to see which country had
+the greatest number of suicides in the dataset.This turned out to be the
+Russian Federation. However this does not tell us much about suicide
+rates as it doesn’t take into account the population of the country. In
+the next code chunk we will sum the total number of suicides per 100000
+population to see which country has the highest suicide rates.
+
+``` r
+suicides %>% 
+  group_by(country) %>% 
+  summarise(n = sum(suicides_per_100k_pop)) %>% 
+  arrange(desc(n))
 ```
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
@@ -78,31 +120,24 @@ suicides %>%
     ## # A tibble: 101 x 2
     ##    country                 n
     ##    <chr>               <dbl>
-    ##  1 Albania              1970
-    ##  2 Antigua and Barbuda    11
-    ##  3 Argentina           82219
-    ##  4 Armenia              1905
-    ##  5 Aruba                 101
-    ##  6 Australia           70111
-    ##  7 Austria             50073
-    ##  8 Azerbaijan           1656
-    ##  9 Bahamas                93
-    ## 10 Bahrain               463
+    ##  1 Russian Federation 11305.
+    ##  2 Lithuania          10589.
+    ##  3 Hungary            10156.
+    ##  4 Kazakhstan          9520.
+    ##  5 Republic of Korea   9350.
+    ##  6 Austria             9076.
+    ##  7 Ukraine             8932.
+    ##  8 Japan               8025.
+    ##  9 Finland             7924.
+    ## 10 Belgium             7900.
     ## # … with 91 more rows
 
-``` r
-suicides %>% 
-  group_by(year) %>% 
-  summarise(n = sum(suicides_no)) %>% 
-  summarise(mean = mean(n))
-```
+It seems that Russia also has the highest total number of suicides per
+100000 people in the 30 years. However the next highest is Lithuania
+which has a small population but a high level of suicide.
 
-    ## `summarise()` ungrouping output (override with `.groups` argument)
-
-    ## # A tibble: 1 x 1
-    ##      mean
-    ##     <dbl>
-    ## 1 210888.
+In our next plot we test one of our hypotheses. Do more men commit
+suicide than women?
 
 ``` r
 suicides %>% 
@@ -117,29 +152,30 @@ suicides %>%
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
-![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](proposal_files/figure-gfm/suicides_by_gender-1.png)<!-- -->
 
-``` r
-suicides %>% 
-  group_by(generation) %>% 
-  summarise(n = sum(suicides_no)) %>% 
-  ggplot(aes(x = generation, y = n)) + 
-  geom_col()
-```
+This graph shows our hypothesis is correct, there is almost three times
+more male suicides than female.
 
-    ## `summarise()` ungrouping output (override with `.groups` argument)
-
-![](proposal_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+Our final plot compares the total number of suicides for each year.
 
 ``` r
 suicides %>% 
   group_by(year) %>% 
   summarise( n = sum(suicides_no)) %>% 
-  filter(year < 2016) %>% 
   ggplot(aes(x = year, y = n)) + 
-  geom_line() 
+  geom_line() +
+  labs(title = "Suicide Rates by Year",
+       x = "Year",
+       y = "Number of Cases")
 ```
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
-![](proposal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](proposal_files/figure-gfm/suicides_by_year-1.png)<!-- -->
+
+The value for 2016 is extremely low. This suggests that the data for
+2016 is incomplete so we should ignore this. Suicide rates were highest
+around the late 1990s, early 2000s. There is also a increase around
+2008/ 2009. One possible contributor to this is the 2008 financial
+crash.
