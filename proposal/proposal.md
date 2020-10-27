@@ -68,6 +68,11 @@ glimpse(suicides)
 
 ## 3\. Data analysis plan
 
+### Preliminary Data Analysis
+
+To do data analysis first we must make sure our variables are named
+correctly.
+
 ``` r
 suicides <- suicides %>% 
   rename(hdi = 'HDI for year',
@@ -134,7 +139,10 @@ suicides %>%
 
 It seems that Russia also has the highest total number of suicides per
 100000 people in the 30 years. However the next highest is Lithuania
-which has a small population but a high level of suicide.
+which has a small population but a high level of suicide. These two
+countries are close geographically. The top three countries, Russia,
+Lithuania and Hungary are all close geographically. This is something we
+will be exploring more later on.
 
 In our next plot we test one of our hypotheses. Do more men commit
 suicide than women?
@@ -154,8 +162,8 @@ suicides %>%
 
 ![](proposal_files/figure-gfm/suicides_by_gender-1.png)<!-- -->
 
-This graph shows our hypothesis is correct, there is almost three times
-more male suicides than female.
+This graph shows our hypothesis is correct, there is a massive
+discrepancy with over three times more male suicides than female.
 
 Our final plot compares the total number of suicides for each year.
 
@@ -179,3 +187,16 @@ The value for 2016 is extremely low. This suggests that the data for
 around the late 1990s, early 2000s. There is also a increase around
 2008/ 2009. One possible contributor to this is the 2008 financial
 crash.
+
+One of our main goals will be trying to find the relationship between a
+countries general standard of living and the rate of suicide. The
+predictor variable will be the HDI and the outcome variable will be
+average number of suicides per 100000 people per year for a country.
+Other explanatory variable such as gdp per capita and levels of
+inequality could be explored.
+
+One important statistical method we will try to use is a heat map, as we
+believe it will be a useful tool for displaying data on countries across
+the world. A heat map could also be used to see levels of poverty and
+inequality across the world. If the heat maps show similar patterns it
+will support our hypothesis.
