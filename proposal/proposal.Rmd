@@ -1,6 +1,6 @@
 ---
 title: "Project proposal"
-author: "Team name"
+author: "Tutorial 3 Team 10"
 output: github_document
 ---
 
@@ -14,7 +14,8 @@ Whilst looking for a dataset for our project, we came across one about suicides.
 Hypothesis:
 We suspect that countries with low gdp per capita and low Human Development Index will have high levels of suicide. We also think that men will have higher suicide rates than women.
 
-The data was collected from kaggle and uses data from the United Nations Development Program. (2018). Human development index (HDI). Retrieved from http://hdr.undp.org/en/indicators/137506; World Bank. (2018). World development indicators: GDP (current US$) by country:1985 to 2016. Retrieved from http://databank.worldbank.org/data/source/world-development-indicators# ; [Szamil]. (2017). Suicide in the Twenty-First Century [dataset]. Retrieved from https://www.kaggle.com/szamil/suicide-in-the-twenty-first-century/notebook ; World Health Organization. (2018). Suicide prevention. Retrieved from http://www.who.int/mental_health/suicide-prevention/en/. The cases are the 101 countries from which the data was collected. And the variables: year, sex, age, number of suicide, population, number of suicides by one hundred thousand people of the population of each country, the HDI of each country in the years that the data was collected and the GDP of each country in each year, GDP per capita in each year for each country and the generation.
+The data was collected from kaggle and uses data from the United Nations Development Program. (2018). Human development index (HDI). Retrieved from http://hdr.undp.org/en/indicators/137506; World Bank. (2018). World development indicators: GDP (current US$) by country:1985 to 2016. Retrieved from http://databank.worldbank.org/data/source/world-development-indicators# ; [Szamil]. (2017). Suicide in the Twenty-First Century [dataset]. Retrieved from https://www.kaggle.com/szamil/suicide-in-the-twenty-first-century/notebook ; World Health Organization. (2018). Suicide prevention. Retrieved from http://www.who.int/mental_health/suicide-prevention/en/. 
+The observations are the number of suicides that fall into each category of gender, age group, country and year. There are in total 27,280 observations spanning 101 countries and 31 years. The variables are: year, sex, age, number of suicides, population, number of suicides per one hundred thousand people, the HDI (Human Development Index) of each country, the GDP of each country, the GDP per capita of each country and the generation of the victims.
 
 ```{r load-packages, message = FALSE}
 library(tidyverse)
@@ -39,6 +40,9 @@ suicides %>%
   group_by(country) %>% 
   summarise(n = sum(suicides_no))
 ```
+
+
+
 
 ```{r}
 suicides %>% 
