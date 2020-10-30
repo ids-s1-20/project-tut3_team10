@@ -1,7 +1,7 @@
 ---
 name: Proposal feedback
 about: Feedback for assignment
-title: Proposal feedback
+title: Proposal feedback - overview & score
 labels: ''
 assignees: ''
 
