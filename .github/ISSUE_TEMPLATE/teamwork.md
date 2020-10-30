@@ -1,7 +1,7 @@
 ---
 name: Teamwork and commits
 about: All team members should contribute
-title: Teamwork All team members should contribute commits
+title: Teamwork and commits
 labels: ''
 assignees: ''
 
