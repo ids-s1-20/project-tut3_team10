@@ -33,7 +33,10 @@ observations spanning 101 countries and 31 years. The variables are:
 year, sex, age, number of suicides, population, number of suicides per
 one hundred thousand people, the HDI (Human Development Index) of each
 country, the GDP of each country, the GDP per capita of each country and
-the generation of the victims.
+the generation of the victims. Each row indicates an observation which
+is grouped by gender, age group, country and year respectively. The rows
+are ordered first by country in ascending order, then year in ascending
+order, then finally suicides per 100k population in descending order.
 
 ``` r
 library(tidyverse)

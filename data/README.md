@@ -1,11 +1,6 @@
-# data
-
-Place data file(s) in this folder.
-
-Then, include codebooks (variables, and their descriptions) for your data file(s)
-using the following format.
-
 ## master.csv
+
+Codebook for master.csv
 
 - `country`: Suicide in specific country. [STRING]
 - `year`: Year in which the group commited suicide. [INTEGER]
@@ -20,6 +15,9 @@ using the following format.
 - `gdp_per_capita($)`: The economic output for such country, per citizen (in dollars). [INTEGER]
 - `generation`: Generation of group (Generation Z, Boomers etc). [STRING]
 
-DIMENSIONS
+Each row indicates an observation which is grouped by gender, 
+age group, country and year respectively. The rows are ordered first by country in ascending order, then year in ascending order, then finally suicides per 100k population in descending order.
+
+`Dimensions:`
 27820 Rows, 12 Columns
 
