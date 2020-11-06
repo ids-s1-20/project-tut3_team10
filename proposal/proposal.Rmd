@@ -16,21 +16,18 @@ library(tidyverse)
 library(broom)
 library(readr)
 suicides <- read_csv("master.csv")
-view(suicides)
 ```
 
 ```{r}
 suicides <- suicides %>% 
   rename(country_year = 'country-year',
          HDI = 'HDI for year')
-view(suicides)
 ```
 
 
 ## 2. Data
 
 ```{r display-dataframe, message = FALSE}
-suicides <- read_csv("master.csv")
 glimpse(suicides)
 ```
 
@@ -54,6 +51,15 @@ suicides %>%
   labs(title = "Suicide Rates by Gender",
        x = "Gender",
        y = "Number of Cases")
+```
+
+```{r}
+suicides %>%
+  rename(`suicides-100k-pop` = 'suicides/100k pop') %>%
+  group_by(year) %>%
+  ggplot(aes(x = year, y = `suicides-100k-pop`)) +
+  geom_point() +
+  labs(title = "Suicide")
 ```
 
 

@@ -9,17 +9,34 @@ library(tidyverse)
 library(broom)
 library(readr)
 suicides <- read_csv("master.csv")
-view(suicides)
 ```
 
 ``` r
 suicides <- suicides %>% 
   rename(country_year = 'country-year',
          HDI = 'HDI for year')
-view(suicides)
 ```
 
 ## 2\. Data
+
+``` r
+glimpse(suicides)
+```
+
+    ## Rows: 27,820
+    ## Columns: 12
+    ## $ country              <chr> "Albania", "Albania", "Albania", "Albania", "Alb…
+    ## $ year                 <dbl> 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, …
+    ## $ sex                  <chr> "male", "male", "female", "male", "male", "femal…
+    ## $ age                  <chr> "15-24 years", "35-54 years", "15-24 years", "75…
+    ## $ suicides_no          <dbl> 21, 16, 14, 1, 9, 1, 6, 4, 1, 0, 0, 0, 2, 17, 1,…
+    ## $ population           <dbl> 312900, 308000, 289700, 21800, 274300, 35600, 27…
+    ## $ `suicides/100k pop`  <dbl> 6.71, 5.19, 4.83, 4.59, 3.28, 2.81, 2.15, 1.56, …
+    ## $ country_year         <chr> "Albania1987", "Albania1987", "Albania1987", "Al…
+    ## $ HDI                  <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+    ## $ `gdp_for_year ($)`   <dbl> 2156624900, 2156624900, 2156624900, 2156624900, …
+    ## $ `gdp_per_capita ($)` <dbl> 796, 796, 796, 796, 796, 796, 796, 796, 796, 796…
+    ## $ generation           <chr> "Generation X", "Silent", "Generation X", "G.I. …
 
 ## 3\. Data analysis plan
 
@@ -60,3 +77,14 @@ suicides %>%
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+``` r
+suicides %>%
+  rename(`suicides-100k-pop` = 'suicides/100k pop') %>%
+  group_by(year) %>%
+  ggplot(aes(x = year, y = `suicides-100k-pop`)) +
+  geom_point() +
+  labs(title = "Suicide")
+```
+
+![](proposal_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
