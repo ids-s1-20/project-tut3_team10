@@ -22,7 +22,7 @@ library(tidyverse)
 library(broom)
 library(readr)
 library(forcats)
-suicides <- read_csv("master.csv")
+suicides <- read_csv("../data/master.csv")
 ```
 
 ## 2. Data
