@@ -14,16 +14,18 @@ output:
       countIncrementalSlides: false
 ---
 
+
 ```{r load-packages, include = FALSE}
 # Add any additional packages you need to this chunk
 library(tidyverse)
-library(broom)
+library(tidymodels)
+library(palmerpenguins)
 library(knitr)
 ```
 
 ```{r setup, include=FALSE}
 # For better figure resolution
-knitr::opts_chunk$set(fig.retina = 3, dpi = 300)
+knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618, out.width = "80%")
 ```
 
 ```{r load-data, include=FALSE}
@@ -109,7 +111,7 @@ iris_modified <- iris %>%
   mutate(Species = fct_other(Species, keep = "setosa"))
 ```
 
-```{r plot-iris, echo = FALSE, fig.height = 2.5, fig.width = 5}
+```{r plot-iris, echo = FALSE}
 # Code hidden with echo = FALSE
 # Uses modified iris dataset from previous chunk
 # Play around with height and width until you're happy with the look
@@ -117,6 +119,24 @@ ggplot(data = iris_modified, mapping = aes(x = Sepal.Width, y = Sepal.Length, co
   geom_point() + 
   theme_minimal() # theme options: https://ggplot2.tidyverse.org/reference/ggtheme.html
 ```
+
+---
+
+## Plot and text
+
+.pull-left[
+- Some text
+- goes here
+]
+.pull-right[
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+# see how I changed out.width and fig.width from defaults
+# to make the figure bigger
+ggplot(penguins, aes(x = bill_length_mm, y = species, color = species)) +
+  geom_boxplot() +
+  theme_minimal()
+```
+]
 
 ---
 
@@ -168,9 +188,9 @@ Limitations:
 
 - Want to find out more about `xaringan`? See https://slides.yihui.name/xaringan/#1.
 
-- You are welcomed to use the default styling of the slides. In fact, that's what 
-I expect majority of you will do. You will differentiate yourself with the content 
-of your presentation.
+- You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
 
 - But some of you might want to play around with slide styling. The 
-`xaringanthemer` provides some solutions for this that: https://pkg.garrickadenbuie.com/xaringanthemer/. 
+`xaringanthemer` provides some solutions for this that: https://pkg.garrickadenbuie.com/xaringanthemer.
+
+- And if you want more bells and whistles, there is also `xaringanExtra`: https://pkg.garrickadenbuie.com/xaringanExtra.
