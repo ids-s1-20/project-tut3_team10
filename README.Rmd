@@ -1,6 +1,6 @@
 ---
-title: Project title
-author: by Team name
+title: Suicide rates by various variables
+author: Tutorial 3 Team 10
 output: github_document
 ---
 
@@ -20,8 +20,9 @@ And make sure to hide your code with  `echo = FALSE` unless the point you are tr
 Your results with proper output and graphics go in your presentation, this space is for a brief summary of your project.
 
 ```{r load-data, echo = FALSE}
+library(tidyverse)
 library(readr)
-suicides <- read_csv("master.csv")
+suicides <- read_csv("data/master.csv")
 view(suicides)
 ```
 
