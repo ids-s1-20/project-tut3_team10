@@ -39,4 +39,5 @@ If you got your data off the web, make sure to note the retrieval date.
 
 ## References
 
-List any references here. You should, at a minimum, list your data source.
+We will be using a dataset about suicide rates, that were collected over several years, in different countries.  
+
