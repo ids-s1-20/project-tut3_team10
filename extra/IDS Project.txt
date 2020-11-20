@@ -1,0 +1,91 @@
+Project Proposal
+
+
+Section 1: 
+        General research questions:
+
+
+Whilst looking for a dataset for our project, we came across one about suicides. This got us wondering about how suicide rates are influenced by different variables. For our project we will be looking into how suicides differ between genders, countries, and each year from 1985 to 2016. We will also compare the countries to other variables such as HDI and gdp per capita, in order to extract valuable new information of what affects the rates of suicide in each country.
+
+
+Hypothesis:
+We suspect that countries with low gdp per capita and low Human Development Index will have high levels of suicide. We also think that men will have higher suicide rates than women.
+
+
+The data was collected from kaggle and uses data from the United Nations Development Program. (2018). Human development index (HDI). Retrieved from http://hdr.undp.org/en/indicators/137506; World Bank. (2018). World development indicators: GDP (current US$) by country:1985 to 2016. Retrieved from http://databank.worldbank.org/data/source/world-development-indicators# ; [Szamil]. (2017). Suicide in the Twenty-First Century [dataset]. Retrieved from https://www.kaggle.com/szamil/suicide-in-the-twenty-first-century/notebook ; World Health Organization. (2018). Suicide prevention. Retrieved from http://www.who.int/mental_health/suicide-prevention/en/. The cases are the 101 countries from which the data was collected. And the variables: year, sex, age, number of suicide, population, number of suicides by one hundred thousand people of the population of each country, the HDI of each country in the years that the data was collected and the GDP of each country in each year, GDP per capita in each year for each country and the generation.
+
+
+
+
+Hypothesis:
+We suspect that countries with low gdp per capita and low Human Development Index will have high levels of suicide. We also think that men will have higher suicide rates than women.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Statistical Method: The idea of creating a heat map will be implemented in order to identify the different countings of suicide deaths in each country, and how it differed according to GDP and HDI. Which could give us an idea of how important events in each country’s history can affect suicide rates.
+In order to support our hypothesized answer, we expect that 
+
+
+
+
+
+
+
+
+Explanation on how exploratory data analysis help us learn more about the data: 
+
+
+Gdp per capita vs average number of suicides per year: Creating this graph, we can better understand how the average wealth per person can influence cases of depression and suicide in one country. And also, how the changes of rate of gdp per capita in each year changes the level of happiness of one population. 
+
+
+Gender vs number of suicides: By analysing the number of suicides per gender, we can see how the different genders have an impact in the number of deaths caused by suicide. Here we can see there is a massive discrepancy between the number of male and female suicides with males being much higher risk. 
+
+
+Number of suicides in each country vs year: By plotting the data of suicides in each country by year, we can visualize how the number 
+
+
+
+
+
+
+
+
+Our Data Visualizations: 
+
+
+Heat map of suicides per 100000 population per year for each country.  Micheal
+
+
+Model of how gdp per capita affects suicide rates. Ed
+
+
+Model of how HDI affects suicide rates. (Need to filter to remove NAs). Fernando
+
+
+Compariring how suicide rates vary over the years. (Can filter for specific countries to see if historical events in the country have had an impact.) Ronan
+
+
+
+
+
+
+
+
+
+
+

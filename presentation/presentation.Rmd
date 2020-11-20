@@ -1,6 +1,6 @@
 ---
 title: "The Rate of Suicides by Various Factors"
-author: "Tutorial 3 Team 10 <br> Michael Beer, Ronan Blackwood, Fernando Gomes"
+author: "Tutorial 3 Team 10 <br> Michael Beer, Ronan Blackwood, Fernando Gomes and Ed Grosvenor"
 institute: "University of Edinburgh"
 date: "`r Sys.Date()`"
 output:
