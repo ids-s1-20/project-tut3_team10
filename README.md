@@ -1,4 +1,4 @@
-Suicide rates by various variables
+The Rate of Suicides by Various Factors
 ================
 Tutorial 3 Team 10
 

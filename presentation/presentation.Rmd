@@ -1,7 +1,6 @@
 ---
-title: "Presentation title"
-subtitle: "Presentation subtitle (if any)"
-author: "Team name <br> Names of team members"
+title: "The Rate of Suicides by Various Factors"
+author: "Tutorial 3 Team 10 <br> Michael Beer, Ronan Blackwood, Fernando Gomes"
 institute: "University of Edinburgh"
 date: "`r Sys.Date()`"
 output:
@@ -21,6 +20,8 @@ library(tidyverse)
 library(tidymodels)
 library(palmerpenguins)
 library(knitr)
+library(readr)
+suicides <- read_csv("../data/master.csv")
 ```
 
 ```{r setup, include=FALSE}

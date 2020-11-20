@@ -1,5 +1,5 @@
 ---
-title: Suicide rates by various variables
+title: The Rate of Suicides by Various Factors
 author: Tutorial 3 Team 10
 output: github_document
 ---
