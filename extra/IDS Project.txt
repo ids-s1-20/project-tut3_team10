@@ -1,4 +1,4 @@
-﻿Project Proposal
+Project Proposal
 
 
 Section 1: 
@@ -68,7 +68,24 @@ Number of suicides in each country vs year: By plotting the data of suicides in 
 Our Data Visualizations: 
 
 
-Heat map of suicides per 100000 population per year for each country.  
+Heat map of suicides per 100000 population per year for each country.  Micheal
 
 
-Model of how gdp per capita affects suicide rates.
+Model of how gdp per capita affects suicide rates. Ed
+
+
+Model of how HDI affects suicide rates. (Need to filter to remove NAs). Fernando
+
+
+Compariring how suicide rates vary over the years. (Can filter for specific countries to see if historical events in the country have had an impact.) Ronan
+
+
+
+
+
+
+
+
+
+
+
