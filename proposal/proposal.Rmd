@@ -41,7 +41,7 @@ suicides_clean <- suicides %>%
          country_year = 'country-year',
          gdp ='gdp_for_year ($)',
          gdp_per_capita = 'gdp_per_capita ($)') 
- view(suicides)
+ view(suicides_clean)
 ```
 
 

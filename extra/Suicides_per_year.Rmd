@@ -9,22 +9,51 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r load-packages}
+library(tidyverse)
+library(ggplot2)
+suicides <- read_csv("../data/master.csv")
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r renaming}
+suicides_clean <- suicides %>% 
+  rename(hdi = 'HDI for year',
+         suicides_per_100k_pop = 'suicides/100k pop',
+         country_year = 'country-year',
+         gdp ='gdp_for_year ($)',
+         gdp_per_capita = 'gdp_per_capita ($)') 
+ view(suicides_clean)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r First plot}
+suicides_clean %>% 
+  group_by(year) %>% 
+  summarise(n = sum(suicides_no)) %>% 
+  ggplot(mapping = aes(x = year, y = n)) +
+  geom_line() +
+  labs(title = "Total Number of Suicides per Year",
+       x = "Year",
+       y = "Total Number of Suicides"
+       )
+```
+
+The suicide rates is much lower for the 1980s and 2016. This is probably due to the lack of data in the dataset. We can check this by checking the first year there is data for a certain country and the last year there is data for a certain country.
+
+```{r first-last-years}
+suicides_clean %>% 
+  group_by(country) %>% 
+  summarise(first_year = min(year), last_year = max(year))
+```
+
+The majority of countries have data between 1990 and 2010 so we can filter for this so that we can work on a consistent dataset. We also have to remove and other countries that do not have data in this range.
+
+```{r}
+year_summary <- suicides_clean %>% 
+  filter(year >= "1990" & year <="2010") %>% 
+  filter(min(year) == "1990" & max(year) == "2010") %>% 
+  group_by(country) %>% 
+  summarise(first_year = min(year), last_year = max(year))  
+  
+```
+
