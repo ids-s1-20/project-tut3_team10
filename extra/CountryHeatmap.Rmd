@@ -20,16 +20,12 @@ world <- ne_countries(scale = "medium", returnclass = "sf") %>%
 ```
 
 ```{r total-suicides-country-per-pop}
-  suicide_rates <- suicides %>%
-  group_by(country) %>% 
-  rename(suicides_per_100k_pop = 'suicides/100k pop',
-         name_long = 'country') %>%
-  summarise(suicide_rates = sum(suicides_per_100k_pop) / 30) %>% 
-  arrange(desc(suicide_rates))
+  suicide_heat <- suicide_rates %>%
+  rename(name_long = 'country')
 ```
 
 ```{r world-map-suicides}
-  suicidemap <- merge(world, suicide_rates, by="name_long", all=TRUE)
+  suicidemap <- merge(world, suicide_heat, by="name_long", all=TRUE)
 ```
 
 ```{r heatmap}
