@@ -11,6 +11,23 @@ library("sf")
 library("rnaturalearth")
 library("rnaturalearthdata")
 theme_set(theme_void())
+suicides <- read_csv("../data/master.csv")
+```
+
+```{r suicide}
+suicides_clean <- suicides %>% 
+  rename(hdi = 'HDI for year',
+         suicides_per_100k_pop = 'suicides/100k pop',
+         country_year = 'country-year',
+         gdp ='gdp_for_year ($)',
+         gdp_per_capita = 'gdp_per_capita ($)') 
+```
+
+```{r suicide-average}
+suicide_rates <- suicides_clean %>%
+  group_by(country) %>% 
+  summarise(suicide_rates = mean(suicides_per_100k_pop)) %>% 
+  arrange(desc(suicide_rates))
 ```
 
 ```{r world}
