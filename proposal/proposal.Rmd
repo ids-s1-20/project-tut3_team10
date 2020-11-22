@@ -46,7 +46,7 @@ suicides_clean <- suicides %>%
 
 
 ```{r total-suicides-country}
-suicides %>% 
+suicides_clean %>% 
   group_by(country) %>% 
   summarise(n = sum(suicides_no)) %>% 
   arrange(desc(n))
@@ -55,7 +55,7 @@ suicides %>%
 First we summed the total suicides by country to see which country had the greatest number of suicides in the dataset.This turned out to be the Russian Federation. However this does not tell us much about suicide rates as it doesn't take into account the population of the country. In the next code chunk we will sum the total number of suicides per 100000 population to see which country has the highest suicide rates.
 
 ```{r total-suicides-country-per-pop}
-suicides %>% 
+suicides_clean %>% 
   group_by(country) %>% 
   summarise(n = sum(suicides_per_100k_pop)) %>% 
   arrange(desc(n))
@@ -66,7 +66,7 @@ It seems that Russia also has the highest total number of suicides per 100000 pe
 In our next plot we test one of our hypotheses. Do more men commit suicide than women?
 
 ```{r suicides_by_gender}
-suicides %>% 
+suicides_clean %>% 
   group_by(sex) %>% 
   summarise(n = sum(suicides_no)) %>% 
   ggplot(aes(x = sex, y = n)) + 
@@ -77,7 +77,7 @@ suicides %>%
 ```
 
 ```{r}
-suicides %>%
+suicides_clean %>%
   group_by(year) %>%
   ggplot(aes(x = year, y = suicides_per_100k_pop)) +
   geom_point() +
@@ -89,7 +89,7 @@ This graph shows our hypothesis is correct, there is a massive discrepancy with 
 Our final plot compares the total number of suicides for each year.
 
 ```{r suicides_by_year}
-suicides %>% 
+suicides_clean %>% 
   group_by(year) %>% 
   summarise( n = sum(suicides_no)) %>% 
   ggplot(aes(x = year, y = n)) + 

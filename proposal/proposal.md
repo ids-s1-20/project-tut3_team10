@@ -75,16 +75,17 @@ To do data analysis first we must make sure our variables are named
 correctly.
 
 ``` r
-suicides <- suicides %>% 
+suicides_clean <- suicides %>% 
   rename(hdi = 'HDI for year',
          suicides_per_100k_pop = 'suicides/100k pop',
          country_year = 'country-year',
          gdp ='gdp_for_year ($)',
          gdp_per_capita = 'gdp_per_capita ($)') 
+ view(suicides)
 ```
 
 ``` r
-suicides %>% 
+suicides_clean %>% 
   group_by(country) %>% 
   summarise(n = sum(suicides_no)) %>% 
   arrange(desc(n))
@@ -115,7 +116,7 @@ the next code chunk we will sum the total number of suicides per 100000
 population to see which country has the highest suicide rates.
 
 ``` r
-suicides %>% 
+suicides_clean %>% 
   group_by(country) %>% 
   summarise(n = sum(suicides_per_100k_pop)) %>% 
   arrange(desc(n))
@@ -149,7 +150,7 @@ In our next plot we test one of our hypotheses. Do more men commit
 suicide than women?
 
 ``` r
-suicides %>% 
+suicides_clean %>% 
   group_by(sex) %>% 
   summarise(n = sum(suicides_no)) %>% 
   ggplot(aes(x = sex, y = n)) + 
@@ -164,7 +165,7 @@ suicides %>%
 ![](proposal_files/figure-gfm/suicides_by_gender-1.png)<!-- -->
 
 ``` r
-suicides %>%
+suicides_clean %>%
   group_by(year) %>%
   ggplot(aes(x = year, y = suicides_per_100k_pop)) +
   geom_point() +
@@ -179,7 +180,7 @@ discrepancy with over three times more male suicides than female.
 Our final plot compares the total number of suicides for each year.
 
 ``` r
-suicides %>% 
+suicides_clean %>% 
   group_by(year) %>% 
   summarise( n = sum(suicides_no)) %>% 
   ggplot(aes(x = year, y = n)) + 
