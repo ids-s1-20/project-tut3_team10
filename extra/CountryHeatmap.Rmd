@@ -10,14 +10,16 @@ library("ggplot2")
 library("sf")
 library("rnaturalearth")
 library("rnaturalearthdata")
-theme_set(theme_bw())
+theme_set(theme_dark())
+theme(
+  
+)
 suicides <- read_csv("../data/master.csv")
 ```
 
 ```{r world}
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   filter(type == "Sovereign country" | type == "Country")
-class(world)
 ```
 
 ```{r total-suicides-country-per-pop}
@@ -30,12 +32,13 @@ class(world)
 ```
 
 ```{r world-map-suicides}
-  suicidemap <- merge(world, suicide_rates, by="name_long")
+  suicidemap <- merge(world, suicide_rates, by="name_long", all=TRUE)
 ```
 
 ```{r heatmap}
   ggplot(data = suicidemap) +
     geom_sf(aes(fill = suicide_rates)) +
-      scale_fill_viridis_c(option = "plasma", trans = "sqrt") +
-        labs(title = "Suicide Rates per Country")
+        labs(title = "Suicide Rates per Country") +
+           scale_fill_continuous(low="thistle2", high="darkred", 
+                       guide="colorbar",na.value="black")
 ```
