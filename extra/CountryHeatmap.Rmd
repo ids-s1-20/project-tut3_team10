@@ -15,7 +15,8 @@ suicides <- read_csv("../data/master.csv")
 ```
 
 ```{r heatmap}
-world <- ne_countries(scale = "medium", returnclass = "sf")
+world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+  filter(type == "Sovereign country" | type == "Country")
 class(world)
 
 ggplot(data = world) +
@@ -23,6 +24,10 @@ ggplot(data = world) +
     geom_sf()
 ```
 
-```{r summarise-country}
-
+```{r total-suicides-country-per-pop}
+suicides %>% 
+  group_by(country) %>% 
+  rename(suicides_per_100k_pop = 'suicides/100k pop') %>%
+  summarise(n = sum(suicides_per_100k_pop)) %>% 
+  arrange(desc(n))
 ```
