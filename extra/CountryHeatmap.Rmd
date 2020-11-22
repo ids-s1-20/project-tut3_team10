@@ -14,20 +14,28 @@ theme_set(theme_bw())
 suicides <- read_csv("../data/master.csv")
 ```
 
-```{r heatmap}
+```{r world}
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   filter(type == "Sovereign country" | type == "Country")
 class(world)
-
-ggplot(data = world) +
-  labs(title = "Suicide Rates per Country") +
-    geom_sf()
 ```
 
 ```{r total-suicides-country-per-pop}
-suicides %>% 
+  suicide_rates <- suicides %>%
   group_by(country) %>% 
-  rename(suicides_per_100k_pop = 'suicides/100k pop') %>%
-  summarise(n = sum(suicides_per_100k_pop)) %>% 
-  arrange(desc(n))
+  rename(suicides_per_100k_pop = 'suicides/100k pop',
+         name_long = 'country') %>%
+  summarise(suicide_rates = sum(suicides_per_100k_pop)) %>% 
+  arrange(desc(suicide_rates))
+```
+
+```{r world-map-suicides}
+  suicidemap <- merge(world, suicide_rates, by="name_long")
+```
+
+```{r heatmap}
+  ggplot(data = suicidemap) +
+    geom_sf(aes(fill = suicide_rates)) +
+      scale_fill_viridis_c(option = "plasma", trans = "sqrt") +
+        labs(title = "Suicide Rates per Country")
 ```
