@@ -34,6 +34,8 @@ suicide_rates <- suicides_clean %>%
 ```{r world}
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   filter(type == "Sovereign country" | type == "Country")
+world_points <- st_centroid(world)
+world_points <- cbind(world, st_coordinates(st_centroid(world$geometry)))
 ```
 
 ```{r total-suicides-country-per-pop}
@@ -46,10 +48,26 @@ world <- ne_countries(scale = "medium", returnclass = "sf") %>%
 ```
 
 ```{r heatmap}
-  ggplot(data = suicidemap) +
+  worldheat <- ggplot(data = suicidemap) +
     geom_sf(aes(fill = suicide_rates)) +
         labs(title = "Suicide Rates Per Country", fill = "Suicide Rates Per \n 100k People") +
            scale_fill_continuous(low="thistle2", high="darkred", 
                        guide="colorbar",na.value="grey") +
                             theme(panel.background = element_rect(fill = "ivory", color = "black"))
+  worldheat
+
+```
+
+```{r europe}
+worldheat +
+  coord_sf(xlim = c(-30, 60), ylim = c(30, 80), expand = FALSE) +
+  labs(title = "Suicide Rates Per Country (Europe)")
+```
+
+```{r southamerica}
+worldheat +
+  coord_sf(xlim = c(-90, -30), ylim = c(-60, 15), expand = FALSE) +
+  geom_text(data= world_points,aes(x=X, y=Y, label=name),
+    color = "black", check_overlap = TRUE) +
+      labs(title = "Suicide Rates Per Country (South America)")
 ```
