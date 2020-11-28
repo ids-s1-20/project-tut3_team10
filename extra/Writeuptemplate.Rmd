@@ -16,7 +16,7 @@ Your results with proper output and graphics go in your presentation, this space
 ```{r load-data, echo = FALSE}
 library(tidyverse)
 library(readr)
-suicides <- read_csv("data/master.csv")
+suicides <- read_csv("../data/master.csv")
 view(suicides)
 ```
 
