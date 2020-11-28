@@ -30,4 +30,27 @@ Some of our main columns are stated below:
 Our question for this project is to explore the effect of various
 factors on the rate of suicide by country. Our question is relatively
 broad and for good reasoning, this allows us to effectively use most of
-the variables and data without missing out on key information.
+the variables and data without missing out on key information. The
+visualizations will be created using various packages including
+tidyverse, and the use of many elements including filter, group and the
+geom\_smooth, geom\_text and geom\_sf to name a few. We decided to use 4
+main data visualizations for this dataset, these include:
+
+Producing a heat map of the global suicide rates.
+
+Visualization of how gdp per capita effects suicide rates.
+
+Visualization of how the human development index (HDI) effects suicide
+rates.
+
+Comparing how suicide rates have differed throughout years, and
+filtering for significant events.
+
+When these visualizations were created, we found several interesting
+outcomes in the dataset. When plotting the heat map we found that the
+highest suicide rates generally came from eastern Europe, with Russia
+having the highest suicide rates for a major country. By zooming in on
+Europe and South America, two dense continents, we can see clearer, and
+observe that Lithuania and Hungary are closely following. We can also
+see the lowest suicides rates, with the United Kingdom and Brazil being
+shown having the lightest shade of red.
