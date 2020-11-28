@@ -29,169 +29,77 @@ suicides <- read_csv("../data/master.csv")
 knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618, out.width = "80%")
 ```
 
-```{r load-data, include=FALSE}
-# Load your data here
+#Heatmap
+
+
+---
+
+```{r load-packages-heatmap, echo = FALSE, include=FALSE}
+library(tidyverse)
+library("ggplot2")
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+library(rgeos)
+theme_set(theme_void())
+suicides <- read_csv("../data/master.csv")
 ```
 
-
-class: center, middle
-
-## A statement of the overall goal / research question
-
----
-
-class: inverse, center, middle
-
-# Section title
-
----
-
-# Hello World
-
-- Click the `Knit` button to compile your presentation
-
-- Make sure to commit and push all resulting files to your GitHub repo
-
----
-
-class: inverse, middle, center
-
-# Using xaringan
-
----
-
-# xaringan
-
-- The presentation is created using the `xaringan` package
-
-- Use `---` to separate slides and `--` for incremental builds
-
---
-
-- Like this
-
----
-
-# Layouts
-
-You can use plain text
-
-- or bullet points
-
-.pull-left[
-or text in two columns $^*$
-]
-.pull-right[
-- like
-- this
-]
-
-.footnote[
-[*] And add footnotes
-]
-
----
-
-# Code
-
-```{r boring-regression}
-# a boring regression
-model <- lm(dist ~ speed, data = cars)
-tidy(model)
-glance(model)
+```{r suicide, echo = FALSE, include=FALSE}
+suicides_clean <- suicides %>% 
+  rename(hdi = 'HDI for year',
+         suicides_per_100k_pop = 'suicides/100k pop',
+         country_year = 'country-year',
+         gdp ='gdp_for_year ($)',
+         gdp_per_capita = 'gdp_per_capita ($)') 
 ```
 
----
-
-# Plots
-
-```{r recode-species, echo = FALSE}
-# In this chunk I'm doing a bunch of analysis that I don't want to present 
-# in my slides. But I need the resulting data frame for a plot I want to present.
-iris_modified <- iris %>%
-  mutate(Species = fct_other(Species, keep = "setosa"))
+```{r suicide-average, echo = FALSE, include=FALSE}
+suicide_rates <- suicides_clean %>%
+  group_by(country) %>% 
+  summarise(suicide_rates = mean(suicides_per_100k_pop)) %>% 
+  arrange(desc(suicide_rates))
 ```
 
-```{r plot-iris, echo = FALSE}
-# Code hidden with echo = FALSE
-# Uses modified iris dataset from previous chunk
-# Play around with height and width until you're happy with the look
-ggplot(data = iris_modified, mapping = aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
-  geom_point() + 
-  theme_minimal() # theme options: https://ggplot2.tidyverse.org/reference/ggtheme.html
+```{r world, echo = FALSE, include=FALSE}
+world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+  filter(type == "Sovereign country" | type == "Country")
+world_points <- st_centroid(world)
+world_points <- cbind(world, st_coordinates(st_centroid(world$geometry)))
 ```
 
----
-
-## Plot and text
-
-.pull-left[
-- Some text
-- goes here
-]
-.pull-right[
-```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
-# see how I changed out.width and fig.width from defaults
-# to make the figure bigger
-ggplot(penguins, aes(x = bill_length_mm, y = species, color = species)) +
-  geom_boxplot() +
-  theme_minimal()
-```
-]
-
----
-
-# Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{r iris-table, echo = FALSE}
-kable(head(iris), format = "html")
+```{r total-suicides-country-per-pop, echo = FALSE, include=FALSE}
+  suicide_heat <- suicide_rates %>%
+  rename(name_long = 'country')
 ```
 
----
-
-# Images
-
-```{r castle, echo = FALSE, out.width = "60%", fig.align = "center", fig.cap = "Image credit: Photo by Jörg Angeli on Unsplash."}
-include_graphics("https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80")
+```{r world-map-suicides, echo = FALSE, include=FALSE}
+  suicidemap <- merge(world, suicide_heat, by="name_long", all=TRUE)
 ```
 
-Or you can also include a full page image. See next slide.
-
----
-
-background-image: url(https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)
-
----
-
-# Math Expressions
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
+```{r heatmap, echo = FALSE}
+  worldheat <- ggplot(data = suicidemap) +
+    geom_sf(aes(fill = suicide_rates)) +
+        labs(title = "Suicide Rates Per Country", fill = "Suicide Rates Per \n 100k People") +
+           scale_fill_continuous(low="thistle2", high="darkred", 
+                       guide="colorbar",na.value="grey") +
+                            theme(panel.background = element_rect(fill = "ivory", color = "black"))
+  worldheat
 
 ```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+
+```{r europe, echo = FALSE}
+worldheat +
+  coord_sf(xlim = c(-30, 60), ylim = c(30, 80), expand = FALSE) +
+  labs(title = "Suicide Rates Per Country (Europe)")
 ```
 
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+```{r southamerica, echo = FALSE}
+worldheat +
+  coord_sf(xlim = c(-90, -30), ylim = c(-60, 15), expand = FALSE) +
+  geom_text(data= world_points,aes(x=X, y=Y, label=name),
+    color = "black", check_overlap = TRUE) +
+      labs(title = "Suicide Rates Per Country (South America)")
+```
 
-Limitations:
-
-1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-1. There should not be spaces after the opening `$` or before the closing `$`.
-
-1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
-
----
-
-# Feeling adventurous?
-
-- Want to find out more about `xaringan`? See https://slides.yihui.name/xaringan/#1.
-
-- You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
-- But some of you might want to play around with slide styling. The 
-`xaringanthemer` provides some solutions for this that: https://pkg.garrickadenbuie.com/xaringanthemer.
-
-- And if you want more bells and whistles, there is also `xaringanExtra`: https://pkg.garrickadenbuie.com/xaringanExtra.
+#------------------Heat map code ends here -----------------------------------------------------
