@@ -20,6 +20,10 @@ master %>%
   geom_histogram(binwidth = 0.005) +
   labs(title = "Suicides by HDI",
        x = "HDI",
-       y = "Suicide count")
+       y = "Suicides count") +
+  geom_smooth(mapping = aes(y = "Suicides count"), method = "lm", color = "Red")
+  
+``` 
+  geom_smooth(mapping = aes(y = `suicides_no`), method = "lm", color = "Red") 
 ```
 
