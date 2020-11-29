@@ -32,8 +32,6 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 #Heatmap
 
 
----
-
 ```{r load-packages-heatmap, echo = FALSE, include=FALSE}
 library(tidyverse)
 library("ggplot2")
@@ -44,6 +42,7 @@ library(rgeos)
 theme_set(theme_void())
 suicides <- read_csv("../data/master.csv")
 ```
+
 
 ```{r suicide, echo = FALSE, include=FALSE}
 suicides_clean <- suicides %>% 
@@ -87,13 +86,13 @@ world_points <- cbind(world, st_coordinates(st_centroid(world$geometry)))
   worldheat
 
 ```
-
+---
 ```{r europe, echo = FALSE}
 worldheat +
   coord_sf(xlim = c(-30, 60), ylim = c(30, 80), expand = FALSE) +
   labs(title = "Suicide Rates Per Country (Europe)")
 ```
-
+---
 ```{r southamerica, echo = FALSE}
 worldheat +
   coord_sf(xlim = c(-90, -30), ylim = c(-60, 15), expand = FALSE) +
@@ -102,4 +101,3 @@ worldheat +
       labs(title = "Suicide Rates Per Country (South America)")
 ```
 
-#------------------Heat map code ends here -----------------------------------------------------
