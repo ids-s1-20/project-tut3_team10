@@ -7,23 +7,38 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(readr)
-master <- read_csv("../data/master.csv")
+suicides <- read_csv("../data/master.csv")
 library(tidyverse)
 library(tidymodels)
 library(openintro)
 library(patchwork)
 ```
 
+```{r suicide}
+suicides_clean <- suicides %>% 
+  rename(hdi = 'HDI for year',
+         suicides_per_100k_pop = 'suicides/100k pop',
+         country_year = 'country-year',
+         gdp ='gdp_for_year ($)',
+         gdp_per_capita = 'gdp_per_capita ($)') 
+```
+
+```{r suicide-average}
+suicide_rates <- suicides_clean %>%
+  filter(!is.na(hdi)) %>%
+  group_by(country) %>%
+  summarise(suicide_rates = mean(suicides_per_100k_pop), mean_hdi = mean(hdi)) %>% 
+  arrange(desc(suicide_rates))
+  view(suicide_rates)
+```
+
 ```{r}
-master %>% 
-  ggplot(aes(x = `HDI for year`)) + 
-  geom_histogram(binwidth = 0.005) +
+suicide_rates %>%
+  ggplot(aes(x = mean_hdi, y = suicide_rates)) + 
+  geom_point() +
+  geom_smooth() +
   labs(title = "Suicides by HDI",
        x = "HDI",
-       y = "Suicides count") +
-  geom_smooth(mapping = aes(y = "Suicides count"), method = "lm", color = "Red")
-  
+       y = "Suicides count")
 ``` 
-  geom_smooth(mapping = aes(y = `suicides_no`), method = "lm", color = "Red") 
-```
 
