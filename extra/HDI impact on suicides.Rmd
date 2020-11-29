@@ -36,9 +36,9 @@ suicide_rates <- suicides_clean %>%
 suicide_rates %>%
   ggplot(aes(x = mean_hdi, y = suicide_rates)) + 
   geom_point() +
-  geom_smooth() +
-  labs(title = "Suicides by HDI",
-       x = "HDI",
-       y = "Suicides count")
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = "Rate of Suicides against HDI",
+       x = "Human Development Index",
+       y = "Suicides per 100k Population")
 ``` 
 
