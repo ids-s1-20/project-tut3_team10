@@ -2,4 +2,68 @@
 title: "gender_suicides"
 output: html_document
 ---
+```{r}
+library(tidyverse)
+library(broom)
+library(readr)
+library(forcats)
+library(tidymodels)
+suicides <- read_csv("../data/master.csv")
+```
+
+```{r datset_cleaning}
+suicides_clean <- suicides %>% 
+  rename(hdi = 'HDI for year',
+         suicides_per_100k_pop = 'suicides/100k pop',
+         country_year = 'country-year',
+         gdp ='gdp_for_year ($)',
+         gdp_per_capita = 'gdp_per_capita ($)')
+```
+
+```{r}
+male_suicides <- suicides_clean %>%
+  filter(sex == "male") %>%
+  group_by(year) %>%
+  summarise(suicide_count = sum(suicides_no), sex = "male")
+
+```
+
+```{r}
+fem_suicides <- suicides_clean %>%
+  filter(sex == "female") %>%
+  group_by(year) %>%
+  summarise(suicide_count = sum(suicides_no), sex = "female")
+
+```
+
+```{r suicide_by_gender_plot}
+ggplot(gen_suicides,aes(x = year, y = suicide_count, color = sex)) +
+  geom_point() +
+  geom_smooth() +
+  labs(title = "Number of Suicides by Gender", x = "Year", y ="Number of Suicides")
+  
+```
+```{r total_no_of_suicides}
+suicides_clean %>%
+  group_by(sex) %>%
+  summarise(n = sum(suicides_no))
+```
+
+
+As you can see from the table, males commit suicide far more frequently than females. The graph shows a lot more than the total number of suicides per gender. In 1987, the difference between the number of yearly suicides between genders is at its lowest throughout the time-line. However, the number of yearly male suicides dramatically increase until around the year 2000. The number of yearly female suicides increase until 2000 but the rate of increase is far lower than that of the males. From 2000, both male and female yearly suicides decrease in number but with, yet again, the male rate is far larger. The data clearly shows that suicides are on a downward trend for both genders.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
