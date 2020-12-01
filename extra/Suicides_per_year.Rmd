@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load-packages}
 library(tidyverse)
 library(ggplot2)
+#library(webshot)
 suicides <- read_csv("../data/master.csv")
 ```
 
@@ -26,6 +27,10 @@ suicides_clean <- suicides %>%
  view(suicides_clean)
 ```
 
+
+We will first look at the whole dataset to see if there is any overarching trends.
+
+
 ```{r First plot}
 suicides_clean %>% 
   group_by(year) %>% 
@@ -38,7 +43,7 @@ suicides_clean %>%
        )
 ```
 
-The suicide rates is much lower for the 1980s and 2016. This is probably due to the lack of data in the dataset. We can check this by checking the first year there is data for a certain country and the last year there is data for a certain country.
+The suicide rates is much lower for the 1980s and 2016. This is probably not an actual trend but is due to the lack of data in the dataset. Some countries won't have data for the outlying years so the suicides won't be counted making it seem like the suicide rates were lower. We can check this by searching for the first year there is data for a certain country and the last year there is data for a certain country.
 
 ```{r first-last-years}
 suicides_clean %>% 
@@ -46,18 +51,37 @@ suicides_clean %>%
   summarise(first_year = min(year), last_year = max(year))
 ```
 
-The majority of countries have data between 1990 and 2010 so we can filter for this so that we can work on a consistent dataset. We also have to remove and other countries that do not have data in this range.
+The first and last year a country appears in the dataset varies wildly so to avoid error in our visualizations we will have only focus on individual countries. Let's analyze the countries with the highest suicide rates. First we must find out what these are.
 
-```{r uk-year}
-suicides_clean %>% 
-  filter(country == "United Kingdom") %>% 
-  group_by(year) %>% 
-  summarise(n = sum(suicides_no)) %>% 
-  ggplot(aes(x = year, y = n)) + 
-  geom_line() +
-  labs(title = "UK Suicide Rates per Year",
-       x = "Year",
-       y = "Total number of suicides")
+```{r suicide-average}
+suicides_clean %>%
+  group_by(country) %>% 
+  summarise(suicide_rates = mean(suicides_per_100k_pop)) %>% 
+  arrange(desc(suicide_rates))
 ```
 
+8 out of the 10 countries with the highest average suicide rate are in eastern europe so this is a good area to focus on for our visualization.
+
+```{r east-european-year}
+suicides_clean %>% 
+  filter(country %in% c("Russian Federation", "Lithuania", "Hungary", "Belarus", "Latvia", "Estonia", "Ukraine", "Slovenia")) %>% 
+  group_by(year, country) %>% 
+  summarise(total_suicides = mean(suicides_per_100k_pop)) %>% 
+  ggplot(aes(x = year, y = total_suicides, color = country)) + 
+  geom_line() + 
+  facet_wrap(~ country, ncol = 4) +
+  labs(title = "Suicide Rates per Year in Eastern European Countries",
+       x = "Year",
+       y = "Total number of suicides") +
+  guides(color = FALSE) 
+```
+
+As we can see there is an obvious downward trend in the suicide rate from 1995 to 2015. It is also interesting to note that 3 out of the 4 countries with data from 1990 onward have an initial upward trend going from 1990 to 1995.
+
+There are many possible explanations for this trend that we can explore. One option is HDI. Our dataset does not have HDI information for Russia so we can use an outside source to compare it to. 
+
+```{r screenshot}
+#webshot("https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY")
+```
+This data from knoema shows us that for Ukraine and Russia there is a dip in HDI around 1995 but it steadily increases. For Hungary there is a steady increase from 1990 to 2015. It is by no means conclusive but it looks like there may be an inverse realtionship between HDI and suicide rates with suicide rates lowest when HDI is highest. We will create another visualization to look into this theory in more depth.
 
