@@ -1,0 +1,11 @@
+---
+title: "globalmodels"
+output: html_document
+---
+
+```{r suicide-average}
+suicide_rates <- suicides_clean %>%
+  group_by(country) %>% 
+  summarise(suicide_rates = mean(suicides_per_100k_pop)) %>% 
+  arrange(desc(suicide_rates))
+```
