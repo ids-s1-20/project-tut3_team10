@@ -18,6 +18,7 @@ output:
 ```{r load-packages, include = FALSE}
 # Add any additional packages you need to this chunk
 library(tidyverse)
+library(showtext)
 library(tidymodels)
 library(palmerpenguins)
 library(knitr)
