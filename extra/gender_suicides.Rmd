@@ -36,6 +36,13 @@ fem_suicides <- suicides_clean %>%
 
 ```
 
+```{r}
+gen_suicides <- rbind(male_suicides, fem_suicides)
+
+```
+
+
+
 ```{r suicide_by_gender_plot}
 ggplot(gen_suicides,aes(x = year, y = suicide_count, color = sex)) +
   geom_point() +
@@ -43,6 +50,7 @@ ggplot(gen_suicides,aes(x = year, y = suicide_count, color = sex)) +
   labs(title = "Number of Suicides by Gender", x = "Year", y ="Number of Suicides")
   
 ```
+
 ```{r total_no_of_suicides}
 suicides_clean %>%
   group_by(sex) %>%
