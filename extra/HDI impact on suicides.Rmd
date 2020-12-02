@@ -24,20 +24,21 @@ suicides_clean <- suicides %>%
 ```
 
 ```{r suicide-average}
-suicide_rates <- suicides_clean %>%
+suicide_rates_hdi <- suicides_clean %>%
   filter(!is.na(hdi)) %>%
   group_by(country) %>%
   summarise(suicide_rates = mean(suicides_per_100k_pop), mean_hdi = mean(hdi)) %>% 
   arrange(desc(suicide_rates))
-  view(suicide_rates)
+  
+suicide_rates_hdi
 ```
 
 ```{r}
-suicide_rates %>%
+suicide_rates_hdi %>%
   ggplot(aes(x = mean_hdi, y = suicide_rates)) + 
   geom_point() +
   geom_smooth(method = "lm", color = "red") +
-  labs(title = "Rate of Suicides against HDI",
+  labs(title = "Rate of Suicides Against HDI",
        x = "Human Development Index",
        y = "Suicides per 100k Population")
 ``` 

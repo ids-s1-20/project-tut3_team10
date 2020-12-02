@@ -5,6 +5,7 @@ institute: "University of Edinburgh"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
+    css: xaringan-themer.css
     lib_dir: libs
     nature:
       ratio: "16:9"
@@ -21,19 +22,6 @@ library(tidymodels)
 library(palmerpenguins)
 library(knitr)
 library(readr)
-suicides <- read_csv("../data/master.csv")
-```
-
-```{r setup, include=FALSE}
-# For better figure resolution
-knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618, out.width = "80%")
-```
-
-#Heatmap
-
-
-```{r load-packages-heatmap, echo = FALSE, include=FALSE}
-library(tidyverse)
 library("ggplot2")
 library("sf")
 library("rnaturalearth")
@@ -43,6 +31,15 @@ theme_set(theme_void())
 suicides <- read_csv("../data/master.csv")
 ```
 
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
 
 ```{r suicide, echo = FALSE, include=FALSE}
 suicides_clean <- suicides %>% 
@@ -52,6 +49,13 @@ suicides_clean <- suicides %>%
          gdp ='gdp_for_year ($)',
          gdp_per_capita = 'gdp_per_capita ($)') 
 ```
+
+```{r setup, include=FALSE}
+# For better figure resolution
+knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618, out.width = "80%")
+```
+
+class: middle, center
 
 ```{r suicide-average, echo = FALSE, include=FALSE}
 suicide_rates <- suicides_clean %>%
@@ -76,7 +80,8 @@ world_points <- cbind(world, st_coordinates(st_centroid(world$geometry)))
   suicidemap <- merge(world, suicide_heat, by="name_long", all=TRUE)
 ```
 
-```{r heatmap, echo = FALSE}
+#Heat map of the world
+```{r heatmap, echo = FALSE, out.width = "100%"}
   worldheat <- ggplot(data = suicidemap) +
     geom_sf(aes(fill = suicide_rates)) +
         labs(title = "Suicide Rates Per Country", fill = "Suicide Rates Per \n 100k People") +
@@ -84,20 +89,63 @@ world_points <- cbind(world, st_coordinates(st_centroid(world$geometry)))
                        guide="colorbar",na.value="grey") +
                             theme(panel.background = element_rect(fill = "ivory", color = "black"))
   worldheat
-
 ```
+class: middle, center
 ---
-```{r europe, echo = FALSE}
+
+#Why a heat map?
+<ul>
+<br>
+--
+<font size="13"><li>Great way of visualizing the data.<br><br></font>
+
+--
+<font size="13"><li>Clean and easy to understand.<br><br></font>
+
+--
+<font size="13"><li>You can fit all the countries on this plot.<br><br></font>
+</ul>
+---
+
+#We can zoom into Europe
+
+.pull-left[
+```{r europe, echo = FALSE, out.width= "100%"}
 worldheat +
   coord_sf(xlim = c(-30, 60), ylim = c(30, 80), expand = FALSE) +
   labs(title = "Suicide Rates Per Country (Europe)")
 ```
+]
+--
+.pull-right[
+<ul>
+<br><font size="6"><li>Europe can be seen to have relatively high suicide rates overall.</font>
+<br><br>
+<font size="6"><li>Especially in for countries in Eastern Europe.</font>
+</ul>
+]
 ---
-```{r southamerica, echo = FALSE}
+
+#What about South America?
+
+.pull-left[
+```{r southamerica, echo = FALSE, out.width = "100%"}
+worldheat +
+  coord_sf(xlim = c(-90, -30), ylim = c(-60, 15), expand = FALSE) +
+      labs(title = "Suicide Rates Per Country (South America)")
+```
+]
+--
+.pull-right[
+```{r southamericatxt, echo = FALSE, out.width = "100%"}
 worldheat +
   coord_sf(xlim = c(-90, -30), ylim = c(-60, 15), expand = FALSE) +
   geom_text(data= world_points,aes(x=X, y=Y, label=name),
     color = "black", check_overlap = TRUE) +
-      labs(title = "Suicide Rates Per Country (South America)")
+      labs(title = "Suicide Rates Per Country (South America) - annotated")
 ```
-
+]
+--
+.footnote[
+<font size="6">South America can be seen to have lower suicide rates overall.</font>
+]
