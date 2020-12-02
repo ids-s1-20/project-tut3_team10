@@ -26,6 +26,7 @@ male_suicides <- suicides_clean %>%
   group_by(year) %>%
   summarise(suicide_count = sum(suicides_no), sex = "male")
 
+male_suicides
 ```
 
 ```{r}
