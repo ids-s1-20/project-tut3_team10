@@ -221,7 +221,7 @@ labs(title = "Total Number of Suicides per Year",
 male_suicides <- suicides_clean %>%
   filter(sex == "male") %>%
   group_by(year) %>%
-  summarise(suicide_mean = mean(suicides_per_100k_pop), sex = "male") %>%
+  summarise(suicide_mean = round(mean(suicides_per_100k_pop), digits = 3), sex = "male") %>%
   arrange(desc(suicide_mean))
 ```
 
@@ -229,7 +229,7 @@ male_suicides <- suicides_clean %>%
 fem_suicides <- suicides_clean %>%
   filter(sex == "female") %>%
   group_by(year) %>%
-  summarise(suicide_mean = mean(suicides_per_100k_pop), sex = "female") %>%
+  summarise(suicide_mean = round(mean(suicides_per_100k_pop), digits = 3), sex = "female") %>%
   arrange(desc(suicide_mean))
   
 ```
@@ -313,14 +313,11 @@ east_europe_suicides = suicides_clean %>%
 <ul>
 <br>
 --
-<font size="4"><li>Between 1995 and 2015 there is a steady decrease in  total number of suicides for these 8 countries. There are 4 countries in this set that have data for 1990, (Belarus, Hungary, Russia and Ukraine.) Belarus, Russia and Ukraine have an increase from 1990 to 1995. It is interesting to note that these are former Soviet Union countries which broke up in 1991. This may have had an effect on the suicide rates but there are many factors at play that it is hard to come to a definite conclusion. <br><br></font>
+<font size="10"><li>There is a decrease in suicide rates between 1995-2015.<br><br></font>
 
 --
-<font size=4"><li>Another hypothesis is that these trends are linked to HDI. Data from knoema:
-https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU shows that for Russia and Ukraine there is a dip in HDI around 1995. This gives us another hypothesis that there is a negative relationship between HDI and average suicide rates. <br><br></font>
+<font size="10"><li>Out of the countries that have data between 1990-1995, there is a suicides increase.<br><br></font>
 
---
-<font size="4"><li>We will use a linear model to investigate this relationship. <br><br></font>
 </ul>
 
 ---
@@ -345,6 +342,7 @@ kable(head(suicide_rates_hdi), format = "html")
 ---
 
 #HDI Plot
+
 --
 .pull-left[
 ```{r hdi-graph, echo=FALSE, warning= FALSE, out.width="100%"}
@@ -359,11 +357,9 @@ suicide_rates_hdi %>%
 ]
 --
 .pull-right[
-<ul>
-<br><font size="7"><li>The smooth line is using the formula 'y ~ x'.</font>
-<br>
---
-<font size="7">There is not much of a trend between HDI and suicide rates.<li>.</font>
+<ul><font size="7"><li>The smooth line is using the formula 'y ~ x'.</font>
+<br><br>
+<font size="7"><li>There is not much of a trend between HDI and suicide rates.</font>
 </ul>
 ]
 ---
@@ -428,10 +424,12 @@ suicides_generation %>%
 #Suicide Hotline
 
 --
-<font size="13">Thank you for watching our presentation.<br><br></font>
+<br>
+<font size="13"><li>Thank you for watching our presentation.<br><br></font>
 --
 
-<font size="13">Below is a number for a mental health hotline.<br><br></font>
+<font size="13"><li>Below is a number for a mental health hotline.<br><br></font>
+--
 
-<font size="13">samaritans: 116 123<br><br></font>
-
+<font size="13"><li>Samaritans: 116 123<br><br></font>
+</br>
