@@ -102,7 +102,8 @@ far lower than that of the males. From 1995, both male and female mean
 suicides decrease in number but with, yet again, the male rate is far
 greater. The data clearly shows that suicides have been on a downward
 trend for both genders until around 2015 when there is a slight
-increase.
+increase. We also plotted a quick bar chart of suicide count per age,
+although this did not consider proportions.
 
 \======= \#\# Presentation
 
@@ -121,3 +122,6 @@ Our presentation can be found [here](extra/FinalPresReal.mp4).
 
 <https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html> - Heat map
 website.
+
+<https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=BY,HU,RU>
+- Data on HDI from Knoema used to formulate a hypothesis.
