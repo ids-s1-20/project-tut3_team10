@@ -430,7 +430,7 @@ glance(HDI_suicides_reg)$adj.r.squared
 
 ---
 
-#Age of victim
+#Age of victims
 
 --
 ```{r age-group, echo=FALSE, include=FALSE}
