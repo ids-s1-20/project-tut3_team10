@@ -410,7 +410,7 @@ suicides_generation %>%
 <ul>
 <br>
 --
-<font size="13"><li>35-54 year olds seem to have the highest suicide count<br><br></font>
+<font size="13"><li>35-54 year olds seem to have the highest suicide count.<br><br></font>
 
 --
 <font size="13"><li>Although this is the count so it does not take into play the rate.<br><br></font>
