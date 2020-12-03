@@ -54,3 +54,5 @@ Our presentation can be found [here](extra/FinalPresReal.mp4).
 https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016/notebooks - Kaggle Data source.
 
 https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html - Heat map website.
+
+https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=BY,HU,RU - Data on HDI from Knoema used to formulate a hypothesis.
