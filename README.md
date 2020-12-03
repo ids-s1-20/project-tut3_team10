@@ -54,19 +54,3 @@ Europe and South America, two dense continents, we can see clearer, and
 observe that Lithuania and Hungary are closely following. We can also
 see the lowest suicides rates, with the United Kingdom and Brazil being
 shown having the lightest shade of red.
-
-## Presentation
-
-Our presentation can be found [here](presentation/presentation.html).
-
-## Data
-
-Include a citation for your data here. See
-<http://libraryguides.vu.edu.au/c.php?g=386501&p=4347840> for guidance
-on proper citation for datasets. If you got your data off the web, make
-sure to note the retrieval date.
-
-## References
-
-List any references here. You should, at a minimum, list your data
-source.
