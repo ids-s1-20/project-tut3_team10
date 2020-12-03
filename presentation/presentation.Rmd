@@ -181,37 +181,6 @@ worldheat +
 <font size="13"><li>There is a lot of missing countries in the data set.<br><br></font>
 </ul>
 
----
-
-#Whats wrong with this graph?
-
---
-
-.pull-left[
-<font size="8">Comment in the chat why you think there is a massive drop in suicides.</font>
-]
---
-.pull-right[
-```{r First plot, echo=FALSE, include=FALSE, out.width="60%"}
-suicide_years <- suicides_clean %>% 
-  group_by(year) %>% 
-  summarise(n = sum(suicides_no))
-```
-
-```{r wrong-graph, echo=FALSE}
-ggplot(data= suicide_years, mapping = aes(x = year, y = n)) +
-geom_line() +
-labs(title = "Total Number of Suicides per Year",
-      x = "Year",
-       y = "Total Number of Suicides"
-       )
-```
-]
---
-
-.footnote[
-<font size="8">Not all countries collected data for the early and late years, especially 2016.<br><br></font>
-]
 
 ---
 
@@ -443,7 +412,7 @@ glance(HDI_suicides_reg)$adj.r.squared
 
 --
 
-<font size="7"> The adjusted r squared is 3.2% which is fairly small meaning the trend is not particularly strong.</font>
+<font size="6"> The adjusted r squared is 3.2% which is fairly small meaning the trend is not particularly strong.</font>
 </ul>
 
 ---
