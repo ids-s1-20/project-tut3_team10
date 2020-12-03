@@ -34,22 +34,11 @@ Using a visualization to compare suicide levels between genders.
 
 When these visualizations were created, we found several interesting outcomes in the dataset. When plotting the heat map we found that the highest suicide rates generally came from eastern Europe, with Russia having the highest suicide rates for a major country. By zooming in on Europe and South America, two dense continents, we can see clearer, and observe that Lithuania and Hungary are closely following. We can also see the lowest suicides rates, with the United Kingdom and Brazil being shown having the lightest shade of red. 
 
-<<<<<<< HEAD
 When creating the line graph for total number of suicides between 1985 and 2016 there was a significant dip around the 80s and a massive drop at 2016. This is not actually a meaningful trend as it is caused by the fact that some countries don't have data as early as 1985 or as late as 2016. In order to fix this error we investigated a smaller group of countries and separated them by faceting. The set of countries we chose were the 8 countries in eastern Europe with the highest suicide rates. Our analysis showed that suicide rates were decreasing from the year of 1990 to 2015 in these countries. Most of the countries had no data for the years 1985 to 1990 but three of the four that did had positive trends going between 1985 and 1990. A possible explanation for these trends was HDI data from knoema showed that for these countries HDI started fairly low, had a low point at 1990 and rose until 2015. This might suggest that there in an negative relationship between HDI and suicide rates. However this is my no means conclusive so we decided to use some other techniques to investigate this hypothesis.
 
 We created a scatter plot of HDI on the x axis and suicide rates on the y axis. We then added a linear model to see if there was any sort of relationship. What surprised us is that there was a small positive relationship between the two. Our model predicted that for every increase of 0.1 in the HDI there was an expected increase of 2.26 in the average number of suicides per 100000 people. This is opposite to our previous hypothesis.
 We also did a residuals plot which had a fairly random scattering of points confirming that a linear model was suitable. The adjusted r squared value was 3.2% meaning that 3.2% of the variability in the suicide rate was predicted by HDI. This is a fairly small value meaning that it is not a strong relationship. We would expect this because there are so many other variables at play. The fact that our HDI hypothesis was disproved means that the variability in the years is probably due to a number of other historical factors. 
 
-
-
-
-
-
-
-
-
-
-=======
 ## Presentation
 
 Our presentation can be found [here](presentation/presentation.html).
@@ -61,4 +50,3 @@ Include a citation for your data here. See <http://libraryguides.vu.edu.au/c.php
 ## References
 
 List any references here. You should, at a minimum, list your data source.
->>>>>>> 9762eff0effdf58e8aa90e503a27f00e75244be0
