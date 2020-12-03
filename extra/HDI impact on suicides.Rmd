@@ -43,3 +43,17 @@ suicide_rates_hdi %>%
        y = "Suicides per 100k Population")
 ``` 
 
+```{r linear model}
+HDI_impact_Suicides <- linear_reg() %>% 
+  set_engine("lm") %>% 
+  fit(mean_hdi ~ suicide_rates, data = suicides_rates_hdi)
+
+```
+
+```{r}
+
+tidy(HDI_impact_Suicides)
+
+y = a * x + b
+```
+
