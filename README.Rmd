@@ -43,7 +43,7 @@ As you can see from the table, males commit suicide far more frequently than fem
 =======
 ## Presentation
 
-Our presentation can be found [here](extra/FinalPresReal.mp4).
+Our presentation can be found [here](FinalPresReal.mp4).
 
 ## Data
 
