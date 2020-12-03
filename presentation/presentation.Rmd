@@ -412,7 +412,7 @@ glance(HDI_suicides_reg)$adj.r.squared
 
 --
 
-<font size="6"> The adjusted r squared is 3.2% which is fairly small meaning the trend is not particularly strong.</font>
+<font size="6"> The adjusted r squared is 3.4% which is fairly small meaning the trend is not particularly strong.</font>
 </ul>
 
 ---
