@@ -191,7 +191,7 @@ worldheat +
 male_suicides <- suicides_clean %>%
   filter(sex == "male") %>%
   group_by(year) %>%
-  summarise(suicide_count = sum(suicides_no), sex = "male") %>%
+  summarise(suicide_count = mean(suicides_no), sex = "male") %>%
   arrange(desc(suicide_count))
 ```
 
@@ -199,7 +199,7 @@ male_suicides <- suicides_clean %>%
 fem_suicides <- suicides_clean %>%
   filter(sex == "female") %>%
   group_by(year) %>%
-  summarise(suicide_count = sum(suicides_no), sex = "female") %>%
+  summarise(suicide_count = mean(suicides_no), sex = "female") %>%
   arrange(desc(suicide_count))
   
 ```
