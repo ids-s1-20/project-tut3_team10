@@ -24,6 +24,21 @@ class: center, middle, inverse, title-slide
 
 
 
+#The data set
+
+&lt;ul&gt;
+&lt;br&gt;
+--
+&lt;font size="13"&gt;&lt;li&gt;This data set records the number of suicides per year for each country.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;There are in total 27,280 observations spanning 101 countries and 31 years.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;The data was collected from Kaggle.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+&lt;/ul&gt;
+
+---
 
 
 
@@ -38,6 +53,7 @@ class: center, middle, inverse, title-slide
 
 
 #Heat map of the world
+--
 &lt;img src="presentation_files/figure-html/heatmap-1.png" width="100%" /&gt;
 class: middle, center
 ---
@@ -54,6 +70,7 @@ class: middle, center
 --
 &lt;font size="13"&gt;&lt;li&gt;You can fit all the countries on this plot.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 &lt;/ul&gt;
+
 ---
 
 #We can zoom into Europe
@@ -72,7 +89,7 @@ class: middle, center
 ---
 
 #What about South America?
-
+--
 .pull-left[
 &lt;img src="presentation_files/figure-html/southamerica-1.png" width="100%" /&gt;
 ]
@@ -103,7 +120,111 @@ class: middle, center
 
 ---
 
-#HDI
+#Gender
+
+
+
+
+--
+.pull-left[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; suicide_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1999 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56215 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1998 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 55631 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 55627 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2002 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 55549 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 55254 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2009 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54920 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+--
+.pull-right[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; suicide_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200578 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2002 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200546 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200452 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1999 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 199904 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2001 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 197653 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1998 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 193960 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+--
+.footnote[
+&lt;font size="6"&gt;The male suicide count can be seen as alot higher than females.&lt;/font&gt;
+]
+---
+#Gender graph plot
+
+
+
+&lt;img src="presentation_files/figure-html/suicide_by_gender_plot-1.png" width="80%" /&gt;
+---
+#Human Development Index
 
 --
 &lt;font size="6"&gt;The Human Development Index (HDI) is statistic calculated from life expectancy, education quality etc.&lt;/font&gt;
@@ -156,11 +277,11 @@ class: middle, center
 
 #HDI Plot
 --
-.pull_left[
+.pull-left[
 &lt;img src="presentation_files/figure-html/hdi-graph-1.png" width="60%" /&gt;
 ]
 --
-.pull_right[
+.pull-right[
 &lt;ul&gt;
 &lt;br&gt;&lt;font size="4"&gt;&lt;li&gt;The smooth line is using the formula 'y ~ x'.&lt;/font&gt;
 &lt;br&gt;&lt;br&gt;
@@ -182,10 +303,6 @@ class: middle, center
 --
 &lt;font size="13"&gt;&lt;li&gt;This shows most of the countries included in the ds had a relatively high HDI.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 &lt;/ul&gt;
-
----
-
-#Gender
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

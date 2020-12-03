@@ -54,6 +54,7 @@ style_mono_accent(
 --
 <font size="13"><li>The data was collected from Kaggle.<br><br></font>
 </ul>
+
 ---
 
 ```{r suicide, echo = FALSE, include=FALSE}
@@ -94,6 +95,7 @@ world_points <- cbind(world, st_coordinates(st_centroid(world$geometry)))
 ```
 
 #Heat map of the world
+--
 ```{r heatmap, echo = FALSE, out.width = "100%"}
   worldheat <- ggplot(data = suicidemap) +
     geom_sf(aes(fill = suicide_rates)) +
@@ -118,6 +120,7 @@ class: middle, center
 --
 <font size="13"><li>You can fit all the countries on this plot.<br><br></font>
 </ul>
+
 ---
 
 #We can zoom into Europe
@@ -134,13 +137,14 @@ worldheat +
 <ul>
 <br><font size="6"><li>Europe can be seen to have relatively high suicide rates overall.</font>
 <br><br>
+--
 <font size="6"><li>Especially in for countries in Eastern Europe.</font>
 </ul>
 ]
 ---
 
 #What about South America?
-
+--
 .pull-left[
 ```{r southamerica, echo = FALSE, out.width = "100%"}
 worldheat +
@@ -181,7 +185,66 @@ worldheat +
 
 ---
 
-#HDI
+#Gender
+
+```{r male-suicides, echo = FALSE, include=FALSE}
+male_suicides <- suicides_clean %>%
+  filter(sex == "male") %>%
+  group_by(year) %>%
+  summarise(suicide_count = sum(suicides_no), sex = "male") %>%
+  arrange(desc(suicide_count))
+```
+
+```{r fem-suicides, echo = FALSE, include=FALSE}
+fem_suicides <- suicides_clean %>%
+  filter(sex == "female") %>%
+  group_by(year) %>%
+  summarise(suicide_count = sum(suicides_no), sex = "female") %>%
+  arrange(desc(suicide_count))
+  
+```
+--
+.pull-left[
+```{r fem-table, echo=FALSE}
+kable(head(fem_suicides), format = "html")
+```
+]
+--
+.pull-right[
+```{r male-table, echo=FALSE}
+kable(head(male_suicides), format = "html")
+```
+]
+--
+.footnote[
+<font size="6">The male suicide count can be seen as alot higher than females.</font>
+]
+---
+#Gender graph plot
+
+```{r gen-suicides, echo=FALSE, include=FALSE}
+gen_suicides <- rbind(male_suicides, fem_suicides)
+```
+--
+.pull-left[
+```{r suicide_by_gender_plot, echo=FALSE}
+ggplot(gen_suicides,aes(x = year, y = suicide_count)) +
+  geom_point(pch = 3) +
+  geom_smooth(aes(color = sex), method = 'loess', formula = y ~ x) +
+  labs(title = "Number of Suicides by Gender", x = "Year", y ="Number of Suicides", colour = "Sex") +
+  scale_y_continuous(breaks = c(50000, 100000, 150000, 200000), labels = c("50k", "100k", "150k", "200k"))
+```
+]
+.pull-right[
+<ul>
+<br><font size="4"><li>T</font>
+<br><br>
+--
+<font size="4">There is not much of a trend between HDI and suicide rates.<li>.</font>
+</ul>
+]
+---
+#Human Development Index
 
 --
 <font size="6">The Human Development Index (HDI) is statistic calculated from life expectancy, education quality etc.</font>
@@ -202,7 +265,7 @@ kable(head(suicide_rates_hdi), format = "html")
 
 #HDI Plot
 --
-.pull_left[
+.pull-left[
 ```{r hdi-graph, echo=FALSE, warning= FALSE, out.width="60%"}
 suicide_rates_hdi %>%
   ggplot(aes(x = mean_hdi, y = suicide_rates)) + 
@@ -214,10 +277,11 @@ suicide_rates_hdi %>%
 ``` 
 ]
 --
-.pull_right[
+.pull-right[
 <ul>
 <br><font size="4"><li>The smooth line is using the formula 'y ~ x'.</font>
 <br><br>
+--
 <font size="4">There is not much of a trend between HDI and suicide rates.<li>.</font>
 </ul>
 ]
@@ -236,9 +300,5 @@ suicide_rates_hdi %>%
 --
 <font size="13"><li>This shows most of the countries included in the ds had a relatively high HDI.<br><br></font>
 </ul>
-
----
-
-#Gender
 
 
