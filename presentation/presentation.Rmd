@@ -301,4 +301,23 @@ suicide_rates_hdi %>%
 <font size="13"><li>This shows most of the countries included in the ds had a relatively high HDI.<br><br></font>
 </ul>
 
+---
+
+#Age of victim
+
+```{r age-group, echo=FALSE, include=FALSE}
+suicides_generation <- suicides_clean %>%
+  group_by(age) %>%
+  summarise(suicides = sum(suicides_no)) %>%
+  arrange(age)
+```
+
+```{r age-plot, echo=FALSE}
+suicides_generation %>%
+  ggplot(aes(x = age, y = suicides)) +
+  geom_col(fill = "lightblue") +
+  labs(y = "Suicides", x = "Age") +
+  scale_y_continuous(breaks = c(500000, 1000000, 1500000, 2000000, 2500000), labels = c("50k", "100k", "150k", "200k", "250k"))
+```
+
 
