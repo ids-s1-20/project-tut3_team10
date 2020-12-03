@@ -282,19 +282,14 @@ ggplot(gen_suicides,aes(x = year, y = suicide_mean)) +
 <font size="13"><li>Male suicides peaked around 1995.<br><br></font>
 
 --
-<font size="13"><li>Female suicides are quite stable with no peaks<br><br></font>
+<font size="13"><li>Female suicides are quite stable with no peaks.<br><br></font>
 </ul>
 
 ---
 
 #More on the year variable
---
 
-.pull-left[
-<font size="13">Type here<br><br></font>
-]
 --
-.pull-right[
 ```{r east-european-year, echo=FALSE, include=FALSE}
 east_europe_suicides = suicides_clean %>% 
   filter(country %in% c("Russian Federation", "Lithuania", "Hungary", "Belarus", "Latvia", "Estonia", "Ukraine", "Slovenia")) %>% 
@@ -311,21 +306,21 @@ east_europe_suicides = suicides_clean %>%
        y = "Total number of suicides") +
   guides(color = FALSE) 
 ```
-]
+
 ---
 #What did we learn?
 
 <ul>
 <br>
 --
-<font size="13"><li>Between 1995 and 2015 there is a steady decrease in  total number of suicides for these 8 countries. There are 4 countries in this set that have data for 1990, (Belarus, Hungary, Russia and Ukraine.) Belarus, Russia and Ukraine have an increase from 1990 to 1995. It is interesting to note that these are former Soviet Union countries which broke up in 1991. This may have had an effect on the suicide rates but there are many factors at play that it is hard to come to a definite conclusion. <br><br></font>
+<font size="4"><li>Between 1995 and 2015 there is a steady decrease in  total number of suicides for these 8 countries. There are 4 countries in this set that have data for 1990, (Belarus, Hungary, Russia and Ukraine.) Belarus, Russia and Ukraine have an increase from 1990 to 1995. It is interesting to note that these are former Soviet Union countries which broke up in 1991. This may have had an effect on the suicide rates but there are many factors at play that it is hard to come to a definite conclusion. <br><br></font>
 
 --
-<font size="13"><li>Another hypothesis is that these trends are linked to HDI. Data from knoema:
+<font size=4"><li>Another hypothesis is that these trends are linked to HDI. Data from knoema:
 https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU shows that for Russia and Ukraine there is a dip in HDI around 1995. This gives us another hypothesis that there is a negative relationship between HDI and average suicide rates. <br><br></font>
 
 --
-<font size="13"><li>We will use a linear model to investigate this relationship. <br><br></font>
+<font size="4"><li>We will use a linear model to investigate this relationship. <br><br></font>
 </ul>
 
 ---
