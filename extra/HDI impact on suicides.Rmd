@@ -68,3 +68,12 @@ ggplot(HDI_suicides_reg_aug, mapping = aes(x = .fitted, y = .resid)) +
 
 There is no obvious pattern or correlation in the residuals plot so the linear model is a suitable model to use.
 
+
+```{r R^2 and R^2 adjusted}
+
+glance(HDI_suicides_reg)$r.squared
+
+glance(HDI_suicides_reg)$adj.r.squared
+
+```
+Based on the numbers obtained from R^2 (which is 4.3%) and R^2 adjusted (which is 3.2%), it is possible to say that the variability of the results obtained is very low, which means that several different factors influence the linear model. 
