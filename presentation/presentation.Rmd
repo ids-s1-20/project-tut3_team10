@@ -137,7 +137,6 @@ worldheat +
 <ul>
 <br><font size="6"><li>Europe can be seen to have relatively high suicide rates overall.</font>
 <br><br>
---
 <font size="6"><li>Especially in for countries in Eastern Europe.</font>
 </ul>
 ]
@@ -185,22 +184,54 @@ worldheat +
 
 ---
 
+#Whats wrong with this graph?
+
+--
+
+.pull-left[
+<font size="10">Although this is pre recorded, comment in the chat why you think there is a massive drop in suicides.</font>
+]
+--
+.pull-right[
+```{r First plot, echo=FALSE, include=FALSE, out.width="60%"}
+suicide_years <- suicides_clean %>% 
+  group_by(year) %>% 
+  summarise(n = sum(suicides_no))
+```
+
+```{r wrong-graph, echo=FALSE}
+ggplot(data= suicide_years, mapping = aes(x = year, y = n)) +
+geom_line() +
+labs(title = "Total Number of Suicides per Year",
+      x = "Year",
+       y = "Total Number of Suicides"
+       )
+```
+]
+--
+
+.footnote[
+<font size="8">Not all countries collected data for the early and late years, especially 2015.<br><br></font>
+]
+
+---
+
 #Gender
 
 ```{r male-suicides, echo = FALSE, include=FALSE}
 male_suicides <- suicides_clean %>%
   filter(sex == "male") %>%
   group_by(year) %>%
-  summarise(suicide_count = mean(suicides_no), sex = "male") %>%
-  arrange(desc(suicide_count))
+  summarise(suicide_mean = mean(suicides_per_100k_pop), sex = "male") %>%
+  arrange(desc(suicide_mean))
 ```
 
 ```{r fem-suicides, echo = FALSE, include=FALSE}
 fem_suicides <- suicides_clean %>%
   filter(sex == "female") %>%
   group_by(year) %>%
-  summarise(suicide_count = mean(suicides_no), sex = "female") %>%
-  arrange(desc(suicide_count))
+  summarise(suicide_mean = mean(suicides_per_100k_pop), sex = "female") %>%
+  arrange(desc(suicide_mean))
   
 ```
 --
@@ -228,11 +259,10 @@ gen_suicides <- rbind(male_suicides, fem_suicides)
 --
 .pull-left[
 ```{r suicide_by_gender_plot, echo=FALSE}
-ggplot(gen_suicides,aes(x = year, y = suicide_count)) +
+ggplot(gen_suicides,aes(x = year, y = suicide_mean)) +
   geom_point(pch = 3) +
   geom_smooth(aes(color = sex), method = 'loess', formula = y ~ x) +
-  labs(title = "Number of Suicides by Gender", x = "Year", y ="Number of Suicides", colour = "Sex") +
-  scale_y_continuous(breaks = c(50000, 100000, 150000, 200000), labels = c("50k", "100k", "150k", "200k"))
+  labs(title = "Number of Suicides by Gender", x = "Year", y ="Mean suicides per 100k Population", colour = "Sex")
 ```
 ]
 .pull-right[
@@ -240,10 +270,64 @@ ggplot(gen_suicides,aes(x = year, y = suicide_count)) +
 <br><font size="4"><li>T</font>
 <br><br>
 --
-<font size="4">There is not much of a trend between HDI and suicide rates.<li>.</font>
+<font size="4">This clearly supports the statistic that male suicide is more frequent than female.<li>.</font>
 </ul>
 ]
+
 ---
+#What did we learn?
+
+<ul>
+<br>
+--
+<font size="13"><li>Male suicide is much more common than female.<br><br></font>
+
+--
+<font size="13"><li>Male suicides spiked around 1995.<br><br></font>
+
+--
+<font size="13"><li>Female suicides are quite stable with no spikes<br><br></font>
+</ul>
+
+---
+
+#More on the age variable
+--
+
+<font size="13">Type here<br><br></font>
+--
+
+```{r east-european-year, echo=FALSE}
+suicides_clean %>% 
+  filter(country %in% c("Russian Federation", "Lithuania", "Hungary", "Belarus", "Latvia", "Estonia", "Ukraine", "Slovenia")) %>% 
+  group_by(year, country) %>% 
+  summarise(total_suicides = mean(suicides_per_100k_pop)) %>% 
+  ggplot(aes(x = year, y = total_suicides, color = country)) + 
+  geom_line() + 
+  facet_wrap(~ country, ncol = 4) +
+  labs(title = "Suicide Rates per Year in Eastern European Countries",
+       x = "Year",
+       y = "Total number of suicides") +
+  guides(color = FALSE) 
+```
+
+---
+#What did we learn?
+
+<ul>
+<br>
+--
+<font size="13"><li>Type here<br><br></font>
+
+--
+<font size="13"><li>Type here<br><br></font>
+
+--
+<font size="13"><li>Type here<br><br></font>
+</ul>
+
+---
+
 #Human Development Index
 
 --
@@ -305,19 +389,40 @@ suicide_rates_hdi %>%
 
 #Age of victim
 
+--
 ```{r age-group, echo=FALSE, include=FALSE}
 suicides_generation <- suicides_clean %>%
   group_by(age) %>%
   summarise(suicides = sum(suicides_no)) %>%
-  arrange(age)
+  slice(match(c("5-14 years","15-24 years","25-34 years","35-54 years","55-74 years","75+ years"), age))
 ```
 
 ```{r age-plot, echo=FALSE}
 suicides_generation %>%
+  mutate(age = fct_relevel(age, 
+            "5-14 years", "15-24 years", "25-34 years", 
+            "35-54 years", "55-74 years", "75+ years")) %>%
   ggplot(aes(x = age, y = suicides)) +
   geom_col(fill = "lightblue") +
   labs(y = "Suicides", x = "Age") +
   scale_y_continuous(breaks = c(500000, 1000000, 1500000, 2000000, 2500000), labels = c("50k", "100k", "150k", "200k", "250k"))
 ```
 
+--
+
+---
+
+#What did we learn?
+
+<ul>
+<br>
+--
+<font size="13"><li>35-54 year olds seem to have the highest suicide count<br><br></font>
+
+--
+<font size="13"><li>Although this is the count so it does not take into play the rate.<br><br></font>
+
+--
+<font size="13"><li>The proportion of ages will be different.<br><br></font>
+</ul>
 

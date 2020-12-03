@@ -120,6 +120,30 @@ class: middle, center
 
 ---
 
+#Whats wrong with this graph?
+
+--
+
+.pull-left[
+&lt;font size="3"&gt;Although this is pre recorded, comment in the chat why you think there is a massive drop in suicides.&lt;/font&gt;
+]
+--
+.pull-right[
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+&lt;img src="presentation_files/figure-html/First plot-1.png" width="60%" /&gt;
+]
+--
+
+.footnote[
+&lt;font size="5"&gt;Not all countries collected data for the early and late years, especially 2015.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+]
+
+---
+
 #Gender
 
 
@@ -131,39 +155,39 @@ class: middle, center
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; suicide_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; suicide_mean &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1999 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 56215 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1995 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.420085 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1998 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 55631 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1988 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.323401 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 55627 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1996 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.314372 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2002 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 55549 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1992 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.249667 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 55254 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1994 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.240024 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2009 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 54920 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1989 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.176827 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -175,39 +199,39 @@ class: middle, center
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; suicide_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; suicide_mean &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 200578 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1995 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.90526 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2002 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 200546 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1996 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.29647 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 200452 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1999 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 199904 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2001 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 197653 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1997 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23.90398 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 1998 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 193960 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23.77420 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1999 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23.19631 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22.09965 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -221,9 +245,66 @@ class: middle, center
 #Gender graph plot
 
 
-
+--
+.pull-left[
 &lt;img src="presentation_files/figure-html/suicide_by_gender_plot-1.png" width="80%" /&gt;
+]
+.pull-right[
+&lt;ul&gt;
+&lt;br&gt;&lt;font size="4"&gt;&lt;li&gt;T&lt;/font&gt;
+&lt;br&gt;&lt;br&gt;
+--
+&lt;font size="4"&gt;This clearly supports the statistic that male suicide is more frequent than female.&lt;li&gt;.&lt;/font&gt;
+&lt;/ul&gt;
+]
+
 ---
+#What did we learn?
+
+&lt;ul&gt;
+&lt;br&gt;
+--
+&lt;font size="13"&gt;&lt;li&gt;Male suicide is much more common than female.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;Male suicides spiked around 1995.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;Female suicides are quite stable with no spikes&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+&lt;/ul&gt;
+
+---
+
+#More on the age variable
+--
+
+&lt;font size="13"&gt;Type here&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+--
+
+
+```
+## `summarise()` regrouping output by 'year' (override with `.groups` argument)
+```
+
+&lt;img src="presentation_files/figure-html/east-european-year-1.png" width="80%" /&gt;
+
+---
+#What did we learn?
+
+&lt;ul&gt;
+&lt;br&gt;
+--
+&lt;font size="13"&gt;&lt;li&gt;Type here&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;Type here&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;Type here&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+&lt;/ul&gt;
+
+---
+
 #Human Development Index
 
 --
@@ -285,6 +366,7 @@ class: middle, center
 &lt;ul&gt;
 &lt;br&gt;&lt;font size="4"&gt;&lt;li&gt;The smooth line is using the formula 'y ~ x'.&lt;/font&gt;
 &lt;br&gt;&lt;br&gt;
+--
 &lt;font size="4"&gt;There is not much of a trend between HDI and suicide rates.&lt;li&gt;.&lt;/font&gt;
 &lt;/ul&gt;
 ]
@@ -302,6 +384,33 @@ class: middle, center
 
 --
 &lt;font size="13"&gt;&lt;li&gt;This shows most of the countries included in the ds had a relatively high HDI.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+&lt;/ul&gt;
+
+---
+
+#Age of victim
+
+--
+
+
+&lt;img src="presentation_files/figure-html/age-plot-1.png" width="80%" /&gt;
+
+--
+
+---
+
+#What did we learn?
+
+&lt;ul&gt;
+&lt;br&gt;
+--
+&lt;font size="13"&gt;&lt;li&gt;35-54 year olds seem to have the highest suicide count&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;Although this is the count so it does not take into play the rate.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+
+--
+&lt;font size="13"&gt;&lt;li&gt;The proportion of ages will be different.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 &lt;/ul&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
