@@ -43,3 +43,28 @@ suicide_rates_hdi %>%
        y = "Suicides per 100k Population")
 ``` 
 
+```{r linear-model}
+HDI_suicides_reg <- linear_reg() %>% 
+  set_engine("lm") %>% 
+  fit(suicide_rates ~ mean_hdi, data = suicide_rates_hdi)
+tidy(HDI_suicides_reg)
+```
+The linear model shows that for every 0.1 increase in HDI there is an increase of 2.26 in the average suicides per 100000 people. This trend is opposite to what we predicted as we suspected an increase in HDI would lower suicide rates.
+
+The formula for this linear model is:
+Average Suicides per 100k pop = -5.69 + 22.6 * Mean HDI
+
+
+We can plot the residuals to see if this is a suitable model.
+
+```{r reiduals-plot}
+HDI_suicides_reg_aug <- augment(HDI_suicides_reg$fit)
+
+ggplot(HDI_suicides_reg_aug, mapping = aes(x = .fitted, y = .resid)) +
+  geom_point(alpha = 0.6)  + 
+  geom_hline(yintercept = 0, color = "gray", lty = "dashed") +
+  labs(x = "Predicted Suicide Rates", y = "Residuals")
+```
+
+There is no obvious pattern or correlation in the residuals plot so the linear model is a suitable model to use.
+

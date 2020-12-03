@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load-packages}
 library(tidyverse)
 library(ggplot2)
-#library(webshot)
+library(webshot)
 suicides <- read_csv("../data/master.csv")
 ```
 
@@ -80,8 +80,6 @@ As we can see there is an obvious downward trend in the suicide rate from 1995 t
 
 There are many possible explanations for this trend that we can explore. One option is HDI. Our dataset does not have HDI information for Russia so we can use an outside source to compare it to. 
 
-```{r screenshot}
-#webshot("https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY")
-```
+
 This data from knoema shows us that for Ukraine and Russia there is a dip in HDI around 1995 but it steadily increases. For Hungary there is a steady increase from 1990 to 2015. It is by no means conclusive but it looks like there may be an inverse realtionship between HDI and suicide rates with suicide rates lowest when HDI is highest. We will create another visualization to look into this theory in more depth.
 
