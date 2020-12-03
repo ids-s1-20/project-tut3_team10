@@ -41,6 +41,21 @@ style_mono_accent(
 )
 ```
 
+#The data set
+
+<ul>
+<br>
+--
+<font size="13"><li>This data set records the number of suicides per year for each country.<br><br></font>
+
+--
+<font size="13"><li>There are in total 27,280 observations spanning 101 countries and 31 years.<br><br></font>
+
+--
+<font size="13"><li>The data was collected from Kaggle.<br><br></font>
+</ul>
+---
+
 ```{r suicide, echo = FALSE, include=FALSE}
 suicides_clean <- suicides %>% 
   rename(hdi = 'HDI for year',
@@ -54,8 +69,6 @@ suicides_clean <- suicides %>%
 # For better figure resolution
 knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618, out.width = "80%")
 ```
-
-class: middle, center
 
 ```{r suicide-average, echo = FALSE, include=FALSE}
 suicide_rates <- suicides_clean %>%
@@ -149,3 +162,83 @@ worldheat +
 .footnote[
 <font size="6">South America can be seen to have lower suicide rates overall.</font>
 ]
+
+---
+
+#What did we learn?
+
+<ul>
+<br>
+--
+<font size="13"><li>Russia has the worst suicide rates for a major country.<br><br></font>
+
+--
+<font size="13"><li>Eastern Europe seem to have high suicide rates.<br><br></font>
+
+--
+<font size="13"><li>There is a lot of missing countries in the data set.<br><br></font>
+</ul>
+
+---
+
+#HDI
+
+--
+<font size="6">The Human Development Index (HDI) is statistic calculated from life expectancy, education quality etc.</font>
+--
+
+```{r suicide-average-hdi, echo = FALSE, warning=FALSE, include=FALSE}
+suicide_rates_hdi <- suicides_clean %>%
+  filter(!is.na(hdi)) %>%
+  group_by(country) %>%
+  summarise(suicide_rates = round(mean(suicides_per_100k_pop),digits = 1), mean_hdi = round(mean(hdi),digits = 2)) %>% 
+  arrange(desc(suicide_rates))
+```
+<br><br>
+```{r hdi-table, echo=FALSE}
+kable(head(suicide_rates_hdi), format = "html")
+```
+---
+
+#HDI Plot
+--
+.pull_left[
+```{r hdi-graph, echo=FALSE, warning= FALSE, out.width="60%"}
+suicide_rates_hdi %>%
+  ggplot(aes(x = mean_hdi, y = suicide_rates)) + 
+  geom_point() +
+  geom_smooth(method = "lm", color = "red", formula = y ~ x) +
+  labs(title = "Rate of Suicides Against HDI",
+       x = "Human Development Index",
+       y = "Suicides per 100k Population")
+``` 
+]
+--
+.pull_right[
+<ul>
+<br><font size="4"><li>The smooth line is using the formula 'y ~ x'.</font>
+<br><br>
+<font size="4">There is not much of a trend between HDI and suicide rates.<li>.</font>
+</ul>
+]
+---
+
+#What did we learn?
+
+<ul>
+<br>
+--
+<font size="13"><li>There seems to be no correlation between HDI and suicide rates.<br><br></font>
+
+--
+<font size="13"><li>The lowest country HDI on our data set was Guatemala with 0.58.<br><br></font>
+
+--
+<font size="13"><li>This shows most of the countries included in the ds had a relatively high HDI.<br><br></font>
+</ul>
+
+---
+
+#Gender
+
+
