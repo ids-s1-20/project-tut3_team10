@@ -27,7 +27,6 @@ library("sf")
 library("rnaturalearth")
 library("rnaturalearthdata")
 library(rgeos)
-theme_set(theme_void())
 suicides <- read_csv("../data/master.csv")
 ```
 
@@ -189,7 +188,7 @@ worldheat +
 --
 
 .pull-left[
-<font size="10">Although this is pre recorded, comment in the chat why you think there is a massive drop in suicides.</font>
+<font size="8">Comment in the chat why you think there is a massive drop in suicides.</font>
 ]
 --
 .pull-right[
@@ -216,7 +215,7 @@ labs(title = "Total Number of Suicides per Year",
 
 ---
 
-#Gender
+#What about gender?
 
 ```{r male-suicides, echo = FALSE, include=FALSE}
 male_suicides <- suicides_clean %>%
@@ -265,13 +264,10 @@ ggplot(gen_suicides,aes(x = year, y = suicide_mean)) +
   labs(title = "Number of Suicides by Gender", x = "Year", y ="Mean suicides per 100k Population", colour = "Sex")
 ```
 ]
-.pull-right[
-<ul>
-<br><font size="4"><li>T</font>
-<br><br>
 --
-<font size="4">This clearly supports the statistic that male suicide is more frequent than female.<li>.</font>
-</ul>
+.pull-right[
+<font size="10">This clearly supports the statistic that male suicide is more frequent than female.<li>.</font>
+
 ]
 
 ---
@@ -294,15 +290,20 @@ ggplot(gen_suicides,aes(x = year, y = suicide_mean)) +
 #More on the age variable
 --
 
+.pull-left[
 <font size="13">Type here<br><br></font>
+]
 --
-
-```{r east-european-year, echo=FALSE}
-suicides_clean %>% 
+.pull-right[
+```{r east-european-year, echo=FALSE, include=FALSE}
+east_europe_suicides = suicides_clean %>% 
   filter(country %in% c("Russian Federation", "Lithuania", "Hungary", "Belarus", "Latvia", "Estonia", "Ukraine", "Slovenia")) %>% 
   group_by(year, country) %>% 
-  summarise(total_suicides = mean(suicides_per_100k_pop)) %>% 
-  ggplot(aes(x = year, y = total_suicides, color = country)) + 
+  summarise(total_suicides = mean(suicides_per_100k_pop))
+```
+
+```{r east-european-year-plot, echo=FALSE}
+  ggplot(data = east_europe_suicides, aes(x = year, y = total_suicides, color = country)) + 
   geom_line() + 
   facet_wrap(~ country, ncol = 4) +
   labs(title = "Suicide Rates per Year in Eastern European Countries",
@@ -310,7 +311,7 @@ suicides_clean %>%
        y = "Total number of suicides") +
   guides(color = FALSE) 
 ```
-
+]
 ---
 #What did we learn?
 
@@ -350,7 +351,7 @@ kable(head(suicide_rates_hdi), format = "html")
 #HDI Plot
 --
 .pull-left[
-```{r hdi-graph, echo=FALSE, warning= FALSE, out.width="60%"}
+```{r hdi-graph, echo=FALSE, warning= FALSE, out.width="100%"}
 suicide_rates_hdi %>%
   ggplot(aes(x = mean_hdi, y = suicide_rates)) + 
   geom_point() +
@@ -363,10 +364,10 @@ suicide_rates_hdi %>%
 --
 .pull-right[
 <ul>
-<br><font size="4"><li>The smooth line is using the formula 'y ~ x'.</font>
+<br><font size="8"><li>The smooth line is using the formula 'y ~ x'.</font>
 <br><br>
 --
-<font size="4">There is not much of a trend between HDI and suicide rates.<li>.</font>
+<font size="8">There is not much of a trend between HDI and suicide rates.<li>.</font>
 </ul>
 ]
 ---
@@ -425,4 +426,16 @@ suicides_generation %>%
 --
 <font size="13"><li>The proportion of ages will be different.<br><br></font>
 </ul>
+
+---
+
+#Suicide Hotline
+
+--
+<font size="13">Thank you for watching our presentation.<br><br></font>
+--
+
+<font size="13">Below is a number for a mental health hotline.<br><br></font>
+
+<font size="13">samaritans: 116 123<br><br></font>
 
