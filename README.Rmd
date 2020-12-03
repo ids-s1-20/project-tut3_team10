@@ -43,12 +43,14 @@ As you can see from the table, males commit suicide far more frequently than fem
 =======
 ## Presentation
 
-Our presentation can be found [here](presentation/presentation.html).
+Our presentation can be found [here](extra/FinalPresReal.mp4).
 
 ## Data
 
-Include a citation for your data here. See <http://libraryguides.vu.edu.au/c.php?g=386501&p=4347840> for guidance on proper citation for datasets. If you got your data off the web, make sure to note the retrieval date.
+1. Rusty. Suicide Rates Overview 1985 to 2016. https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016 (accessed 23 October 2020).
 
 ## References
 
-List any references here. You should, at a minimum, list your data source.
+https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016/notebooks - Kaggle Data source.
+
+https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html - Heat map website.
