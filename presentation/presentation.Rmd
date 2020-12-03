@@ -286,8 +286,38 @@ ggplot(gen_suicides,aes(x = year, y = suicide_mean)) +
 </ul>
 
 ---
+#Whats wrong with this graph?
 
-#More on the year variable
+--
+
+.pull-left[
+<font size="8">Comment in the chat why you think there is a massive drop in suicides.</font>
+]
+--
+.pull-right[
+```{r First plot, echo=FALSE, include=FALSE, out.width="60%"}
+suicide_years <- suicides_clean %>% 
+  group_by(year) %>% 
+  summarise(n = sum(suicides_no))
+```
+
+```{r wrong-graph, echo=FALSE}
+ggplot(data= suicide_years, mapping = aes(x = year, y = n)) +
+geom_line() +
+labs(title = "Total Number of Suicides per Year",
+      x = "Year",
+       y = "Total Number of Suicides"
+       )
+```
+]
+--
+
+.footnote[
+<font size="8">Not all countries collected data for the early and late years, especially 2016.<br><br></font>
+]
+
+---
+#Analysis on the year variable
 
 --
 ```{r east-european-year, echo=FALSE, include=FALSE}
