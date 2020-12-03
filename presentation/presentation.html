@@ -270,10 +270,6 @@ class: middle, center
 ---
 
 #More on the year variable
-<<<<<<< HEAD
---
-=======
->>>>>>> 505869cb2ee20339f7d1a34a62d19f163f938113
 
 --
 
@@ -286,22 +282,11 @@ class: middle, center
 &lt;ul&gt;
 &lt;br&gt;
 --
-<<<<<<< HEAD
-&lt;font size="13"&gt;&lt;li&gt;Between 1995 and 2015 there is a steady decrease in  total number of suicides for these 8 countries. There are 4 countries in this set that have data for 1990, (Belarus, Hungary, Russia and Ukraine.) Belarus, Russia and Ukraine have an increase from 1990 to 1995. It is interesting to note that these are former Soviet Union countries which broke up in 1991. This may have had an effect on the suicide rates but there are many factors at play that it is hard to come to a definite conclusion. &lt;br&gt;&lt;br&gt;&lt;/font&gt;
-
---
-&lt;font size="13"&gt;&lt;li&gt;Another hypothesis is that these trends are linked to HDI. Data from knoema:
-https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU shows that for Russia and Ukraine there is a dip in HDI around 1995. This gives us another hypothesis that there is a negative relationship between HDI and average suicide rates. &lt;br&gt;&lt;br&gt;&lt;/font&gt;
-
---
-&lt;font size="13"&gt;&lt;li&gt;We will use a linear model to investigate this relationship. &lt;br&gt;&lt;br&gt;&lt;/font&gt;
-=======
 &lt;font size="10"&gt;&lt;li&gt;There is a decrease in suicide rates between 1995-2015.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 
 --
 &lt;font size="10"&gt;&lt;li&gt;Out of the countries that have data between 1990-1995, there is a suicides increase.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 
->>>>>>> 505869cb2ee20339f7d1a34a62d19f163f938113
 &lt;/ul&gt;
 
 ---
@@ -365,23 +350,17 @@ https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU show
 ]
 --
 .pull-right[
-<<<<<<< HEAD
 &lt;ul&gt;
 &lt;br&gt;&lt;font size="7"&gt;&lt;li&gt;The smooth line is using the formula 'y ~ x'.&lt;/font&gt;
 &lt;br&gt;
---
-&lt;font size="7"&gt;There is a small trend between HDI and suicide rates.&lt;li&gt;.&lt;/font&gt;
-=======
-&lt;ul&gt;&lt;font size="7"&gt;&lt;li&gt;The smooth line is using the formula 'y ~ x'.&lt;/font&gt;
-&lt;br&gt;&lt;br&gt;
-&lt;font size="7"&gt;&lt;li&gt;There is not much of a trend between HDI and suicide rates.&lt;/font&gt;
->>>>>>> 505869cb2ee20339f7d1a34a62d19f163f938113
+&lt;br&gt;
+&lt;font size="7"&gt;&lt;li&gt;There is a small trend between HDI and suicide rates.&lt;/font&gt;
 &lt;/ul&gt;
 ]
 ---
----
 
 #HDI Linear Model
+--
 
 
 ```
@@ -391,27 +370,27 @@ https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU show
 ## 1 (Intercept)    -6.02      8.75    -0.688  0.493 
 ## 2 mean_hdi       23.0      11.3      2.03   0.0456
 ```
+--
 
-&lt;font size="7"&gt;For every increase of 0.1 in the HDI the linear model predicts an increase of 2.26 in the average number of suicide per 100000 people. &lt;li&gt;.&lt;/font&gt;
+&lt;font size="6"&gt;For every increase of 0.1 in the HDI the linear model predicts an increase of 2.26 in the average number of suicide per 100000 people.&lt;/font&gt;
 &lt;/ul&gt;
-
----
 
 ---
 
 #HDI Linear Model Residuals Plot
+--
 
-&lt;img src="presentation_files/figure-html/reiduals-plot-1.png" width="100%" /&gt;
+&lt;img src="presentation_files/figure-html/reiduals-plot-1.png" width="60%" /&gt;
+--
 
-&lt;font size="7"&gt; The residuals plot gives a fairly random scatter. &lt;li&gt;.&lt;/font&gt;
+&lt;font size="6"&gt; The residuals plot gives a fairly random scatter.&lt;/font&gt;
 &lt;/ul&gt;
-
----
 
 ---
 
 #HDI Adjusted R Squared
 
+--
 
 ```
 ## [1] 0.0446537
@@ -421,7 +400,9 @@ https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU show
 ## [1] 0.03379749
 ```
 
-&lt;font size="7"&gt; The adjusted r squared is 3.2% which is fairly small meaning the trend is not paticularly strong. &lt;li&gt;.&lt;/font&gt;
+--
+
+&lt;font size="7"&gt; The adjusted r squared is 3.2% which is fairly small meaning the trend is not particularly strong.&lt;/font&gt;
 &lt;/ul&gt;
 
 ---
@@ -430,10 +411,10 @@ https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU show
 &lt;ul&gt;
 &lt;br&gt;
 --
-&lt;font size="13"&gt;&lt;li&gt;There is a small positive relationship between HDI and average number of suicides per 100000 people. This is the opposite to our previous hypothesis that there is a negative relationship. &lt;br&gt;&lt;br&gt;&lt;/font&gt;
+&lt;font size="6"&gt;&lt;li&gt;There is a small positive relationship between HDI and average number of suicides per 100000 people. This is the opposite to our previous hypothesis that there is a negative relationship. &lt;br&gt;&lt;br&gt;&lt;/font&gt;
 
 --
-&lt;font size="13"&gt;&lt;li&gt; A possible reason for this is that countries with a low HDI are not as effective in recording suicide deaths.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+&lt;font size="6"&gt;&lt;li&gt; A possible reason for this is that countries with a low HDI are not as effective in recording suicide deaths.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 
 
 ---
@@ -454,7 +435,7 @@ https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU show
 &lt;ul&gt;
 &lt;br&gt;
 --
-&lt;font size="13"&gt;&lt;li&gt;35-54 year olds seem to have the highest suicide count&lt;br&gt;&lt;br&gt;&lt;/font&gt;
+&lt;font size="13"&gt;&lt;li&gt;35-54 year olds seem to have the highest suicide count.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 
 --
 &lt;font size="13"&gt;&lt;li&gt;Although this is the count so it does not take into play the rate.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
@@ -473,8 +454,7 @@ https://knoema.com/atlas/Ukraine/Human-development-index?compareTo=RU,BY,HU show
 --
 
 &lt;font size="13"&gt;&lt;li&gt;Below is a number for a mental health hotline.&lt;br&gt;&lt;br&gt;&lt;/font&gt;
---
-
+&lt;br&gt;
 &lt;font size="13"&gt;&lt;li&gt;Samaritans: 116 123&lt;br&gt;&lt;br&gt;&lt;/font&gt;
 &lt;/br&gt;
     </textarea>

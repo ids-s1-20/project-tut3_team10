@@ -357,41 +357,35 @@ suicide_rates_hdi %>%
 ]
 --
 .pull-right[
-<<<<<<< HEAD
 <ul>
 <br><font size="7"><li>The smooth line is using the formula 'y ~ x'.</font>
 <br>
---
-<font size="7">There is a small trend between HDI and suicide rates.<li>.</font>
-=======
-<ul><font size="7"><li>The smooth line is using the formula 'y ~ x'.</font>
-<br><br>
-<font size="7"><li>There is not much of a trend between HDI and suicide rates.</font>
->>>>>>> 505869cb2ee20339f7d1a34a62d19f163f938113
+<br>
+<font size="7"><li>There is a small trend between HDI and suicide rates.</font>
 </ul>
 ]
 ---
----
 
 #HDI Linear Model
+--
 
-```{r linear-model, echo=FALSE, warning= FALSE, out.width="100%"}
+```{r linear-model, echo=FALSE, warning= FALSE}
 HDI_suicides_reg <- linear_reg() %>% 
   set_engine("lm") %>% 
   fit(suicide_rates ~ mean_hdi, data = suicide_rates_hdi)
 tidy(HDI_suicides_reg)
 ```
+--
 
-<font size="7">For every increase of 0.1 in the HDI the linear model predicts an increase of 2.26 in the average number of suicide per 100000 people. <li>.</font>
+<font size="6">For every increase of 0.1 in the HDI the linear model predicts an increase of 2.26 in the average number of suicide per 100000 people.</font>
 </ul>
 
 ---
 
----
-
 #HDI Linear Model Residuals Plot
+--
 
-```{r reiduals-plot, echo=FALSE, warning= FALSE, out.width="100%"}
+```{r reiduals-plot, echo=FALSE, warning= FALSE, out.width="60%"}
 HDI_suicides_reg_aug <- augment(HDI_suicides_reg$fit)
 
 ggplot(HDI_suicides_reg_aug, mapping = aes(x = .fitted, y = .resid)) +
@@ -399,16 +393,16 @@ ggplot(HDI_suicides_reg_aug, mapping = aes(x = .fitted, y = .resid)) +
   geom_hline(yintercept = 0, color = "gray", lty = "dashed") +
   labs(x = "Predicted Suicide Rates", y = "Residuals")
 ```
+--
 
-<font size="7"> The residuals plot gives a fairly random scatter. <li>.</font>
+<font size="6"> The residuals plot gives a fairly random scatter.</font>
 </ul>
-
----
 
 ---
 
 #HDI Adjusted R Squared
 
+--
 ```{r R^2 and R^2 adjusted, echo=FALSE, warning= FALSE, out.width="100%"}
 
 glance(HDI_suicides_reg)$r.squared
@@ -417,7 +411,9 @@ glance(HDI_suicides_reg)$adj.r.squared
 
 ```
 
-<font size="7"> The adjusted r squared is 3.2% which is fairly small meaning the trend is not particularly strong. <li>.</font>
+--
+
+<font size="7"> The adjusted r squared is 3.2% which is fairly small meaning the trend is not particularly strong.</font>
 </ul>
 
 ---
@@ -426,10 +422,10 @@ glance(HDI_suicides_reg)$adj.r.squared
 <ul>
 <br>
 --
-<font size="13"><li>There is a small positive relationship between HDI and average number of suicides per 100000 people. This is the opposite to our previous hypothesis that there is a negative relationship. <br><br></font>
+<font size="6"><li>There is a small positive relationship between HDI and average number of suicides per 100000 people. This is the opposite to our previous hypothesis that there is a negative relationship. <br><br></font>
 
 --
-<font size="13"><li> A possible reason for this is that countries with a low HDI are not as effective in recording suicide deaths.<br><br></font>
+<font size="6"><li> A possible reason for this is that countries with a low HDI are not as effective in recording suicide deaths.<br><br></font>
 
 
 ---
@@ -454,8 +450,6 @@ suicides_generation %>%
   labs(y = "Suicides", x = "Age") +
   scale_y_continuous(breaks = c(500000, 1000000, 1500000, 2000000, 2500000), labels = c("50k", "100k", "150k", "200k", "250k"))
 ```
-
---
 
 ---
 
@@ -482,8 +476,7 @@ suicides_generation %>%
 <font size="13"><li>Thank you for watching our presentation.<br><br></font>
 --
 
-<font size="13"><li>Below is a number for a mental health hotline.<br><br></font>
---
-
+<font size="13"><li>Below is a number for a mental health hotline.<br></font>
+<br>
 <font size="13"><li>Samaritans: 116 123<br><br></font>
 </br>
