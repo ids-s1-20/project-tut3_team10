@@ -266,7 +266,7 @@ ggplot(gen_suicides,aes(x = year, y = suicide_mean)) +
 ]
 --
 .pull-right[
-<font size="10">This clearly supports the statistic that male suicide is more frequent than female.<li>.</font>
+<font size="8">This clearly supports the statistic that male suicide is more frequent than female.</font>
 
 ]
 
@@ -279,10 +279,10 @@ ggplot(gen_suicides,aes(x = year, y = suicide_mean)) +
 <font size="13"><li>Male suicide is much more common than female.<br><br></font>
 
 --
-<font size="13"><li>Male suicides spiked around 1995.<br><br></font>
+<font size="13"><li>Male suicides peaked around 1995.<br><br></font>
 
 --
-<font size="13"><li>Female suicides are quite stable with no spikes<br><br></font>
+<font size="13"><li>Female suicides are quite stable with no peaks<br><br></font>
 </ul>
 
 ---
@@ -365,10 +365,10 @@ suicide_rates_hdi %>%
 --
 .pull-right[
 <ul>
-<br><font size="8"><li>The smooth line is using the formula 'y ~ x'.</font>
-<br><br>
+<br><font size="7"><li>The smooth line is using the formula 'y ~ x'.</font>
+<br>
 --
-<font size="8">There is not much of a trend between HDI and suicide rates.<li>.</font>
+<font size="7">There is not much of a trend between HDI and suicide rates.<li>.</font>
 </ul>
 ]
 ---
