@@ -82,14 +82,16 @@ relationship. What surprised us is that there was a small positive
 relationship between the two. Our model predicted that for every
 increase of 0.1 in the HDI there was an expected increase of 2.26 in the
 average number of suicides per 100000 people. This is opposite to our
-previous hypothesis. We also did a residuals plot which had a fairly
-random scattering of points confirming that a linear model was suitable.
-The adjusted r squared value was 3.2% meaning that 3.2% of the
-variability in the suicide rate was predicted by HDI. This is a fairly
-small value meaning that it is not a strong relationship. We would
-expect this because there are so many other variables at play. The fact
-that our HDI hypothesis was disproved means that the variability in the
-years is probably due to a number of other historical factors.
+previous hypothesis.
+
+We also did a residuals plot which had a fairly random scattering of
+points confirming that a linear model was suitable. The adjusted r
+squared value was 3.2% meaning that 3.2% of the variability in the
+suicide rate was predicted by HDI. This is a fairly small value meaning
+that it is not a strong relationship. We would expect this because there
+are so many other variables at play. The fact that our HDI hypothesis
+was disproved means that the variability in the years is probably due to
+a number of other historical factors.
 
 As you can see from the table, males commit suicide far more frequently
 than females. The graph shows a lot more than the mean number of
@@ -107,7 +109,8 @@ although this did not consider proportions.
 
 \======= \#\# Presentation
 
-Our presentation can be found [here](extra/FinalPresReal.mp4).
+Our presentation can be found
+[here](https://media.ed.ac.uk/media/tut3_team10Presentation/1_uhiwajh1).
 
 ## Data
 
